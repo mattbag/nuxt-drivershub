@@ -1,0 +1,6 @@
+.wrap {
+    @extend .mx-auto;
+    max-width: calc(#{$containerWidth} + 2rem);
+    display: flex;
+    flex-wrap: wrap;
+}

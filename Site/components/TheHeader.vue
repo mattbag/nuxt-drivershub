@@ -21,7 +21,7 @@
         <nuxt-link to="/signup">signup</nuxt-link>
         <!-- <nuxt-link to="/login">login</nuxt-link> -->
         <btn-link 
-          :text="'Login'"
+          :text="'Join'"
           :url="'/login'"
           ></btn-link>
       </nav>

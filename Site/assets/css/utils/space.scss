@@ -1,0 +1,49 @@
+
+$mp_coef: 4;
+$mp_sides:(
+    'top':'t',
+    'bottom':'b',
+);
+@mixin mp_generator($prop, $prefix, $range) {
+    @for $var from 0 to $range {
+        #{$prefix} {
+
+            @each $direction,$class in $mp_sides {
+                &#{$class}#{$var} {
+                    #{$prop}-#{$direction}: rem($var* $mp_coef);
+                }
+              }
+
+            &y#{$var} {
+                @extend #{$prefix}t#{$var};
+                @extend #{$prefix}b#{$var};
+            }
+            &x#{$var} {
+                #{$prop}-left: rem($var* $mp_coef);
+                #{$prop}-right: rem($var* $mp_coef);
+            }
+        }
+    }
+}
+ @include mp_generator('padding','.p',7);
+ @include mp_generator('margin','.m',7);
+
+ .mx-auto{
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+
+ .abs{
+     position:absolute;
+    }
+    .rel{
+        
+        position:relative;
+ }
+
+ @for $var from 1 to 9 {
+    .w#{$var}{
+        width: $var * 10%
+    }
+ }

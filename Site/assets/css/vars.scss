@@ -1,6 +1,11 @@
-$primary: #333436;
+@function rem($size) {
+    $remSize: $size / 16;
+    @return #{$remSize}rem;
+}
+
+$primary: #333;
+$secondary: rgb(201, 23, 23);
 $accent: yellow;
 $white: #fff;
-
-$containerWidth: 1200px;
+$containerWidth: rem(1200);
 $headerHeight: 60px;
