@@ -20,9 +20,17 @@
     </div>
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold">Club</p>
+      <label v-for="c in clubs" :key="'club_filder_' + c" class="block">
+        <input type="checkbox" name="" id="" class="mr-2">
+        <span>{{c}}</span>
+      </label>
     </div>
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold">Categories</p>
+      <label v-for="c in clubs" :key="'club_filder_' + c" class="block">
+        <input type="checkbox" name="" id="" class="mr-2">
+        <span>{{c}}</span>
+      </label>
     </div>
 
     </aside>
@@ -55,8 +63,9 @@
       </InfiniteLoading> -->
     </section>
 
-  <div class="sidebar px-4">
-    <ArticleSidebar :featured-articles="$store.state.featuredArticles || $store.state.articles"/>
+  <div class="w-1/4 px-4">
+    <ArticleSidebar v-if="$store.state.featuredArticles.length" :featured-articles="$store.state.featuredArticles"/>
+    <ArticleSidebar v-else :featured-articles="$store.state.articles"/>
   </div>
 
   </div>
@@ -90,6 +99,12 @@ export default {
         }&_embed`
       );
       store.commit("setFeaturedArticles", articles.data);
+    }
+  },
+
+  data(){
+    return{
+      clubs: [1,2,3,4,5]
     }
   },
 

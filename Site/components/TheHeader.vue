@@ -91,7 +91,7 @@ header {
     }
   }
 
-  a {
+  a:not(.btn) {
     border-color: $white;
     color: $white;
     font-weight: 300;

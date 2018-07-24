@@ -83,7 +83,7 @@ a {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-origin: center;
+    background-position: center;
     background-repeat: no-repeat;
   }
   img {
