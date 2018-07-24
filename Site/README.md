@@ -6,6 +6,10 @@
 
 [Nuxt.js](https://github.com/nuxt/nuxt.js) + [WordPress REST API](https://developer.wordpress.org/rest-api/)
 
+## Tailwind example
+
+https://github.com/nuxt/nuxt.js/tree/dev/examples/tailwindcss
+
 ## Demo
 
 [https://nuepress.kmr.io](https://nuepress.kmr.io/)

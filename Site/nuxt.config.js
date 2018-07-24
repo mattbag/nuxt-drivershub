@@ -22,8 +22,9 @@ module.exports = {
     ]
   },
   css: [
-    'normalize.css/normalize.css',
-    'swiper/dist/css/swiper.css'
+    // 'normalize.css/normalize.css',
+    'swiper/dist/css/swiper.css',
+    '~/assets/css/tailwind.css'
   ],
 
   // Headers of the page
