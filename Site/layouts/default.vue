@@ -1,9 +1,9 @@
 <template>
-  <div class="blog" id="blog">
-    <Spinner1/>
+  <div class="blog" id="blog" style="padding-top:60px">
+    <!-- <Spinner1/> -->
     <div class="interface">
       <TheHeader/>
-      <main role="main" class="py-6">
+      <main role="main" class="py-2">
         <nuxt/>
       </main>
       <TheFooter v-if="$route.name != 'index'"/>

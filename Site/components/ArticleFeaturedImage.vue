@@ -10,11 +10,11 @@
         :style="{ paddingTop: featuredImageAspectRatio}"
       ></div>
       <img v-lazy="featuredImage.source_url">
-      <div
+      <!-- <div
         class="featured-image-padding"
         :style="{ paddingTop: featuredImageAspectRatio}"
-      >
-      </div>
+      > -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
 
   .image-height {
     background-color: #525252;
-    position: absolute;
+    // position: absolute;
     transition: 0.2s;
     width: 100%;
 
