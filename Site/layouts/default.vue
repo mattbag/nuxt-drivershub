@@ -3,7 +3,7 @@
     <Spinner1/>
     <div class="interface">
       <TheHeader/>
-      <main role="main">
+      <main role="main" class="py-6">
         <nuxt/>
       </main>
       <TheFooter v-if="$route.name != 'index'"/>
@@ -27,15 +27,6 @@ export default {
 
 <style lang="scss">
 @import "~assets/css/vars.scss";
-
-// .blog * {
-//   -moz-osx-font-smoothing: grayscale;
-//   -webkit-font-smoothing: antialiased;
-//   background-repeat: no-repeat;
-//   box-sizing: border-box;
-//   position: relative;
-//   transition-timing-function: cubic-bezier(.11,.89,.31,.99);
-// }
 
 html {
   background-color: #f5f5f5;
@@ -65,53 +56,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#blog {
-  > .interface {
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    overflow: hidden;
-    // padding-top: 80px;
-
-    // @media (max-width: 700px) {
-    // padding-top: 60px;
-    // }
-  }
-
-  > .spinner {
-    display: block;
-    left: calc(50% - 20px);
-    position: absolute;
-    top: calc(50vh - 20px - 64px);
-    z-index: 10;
-  }
-}
-
-html.wf-active #blog,
-html.wf-inactive #blog {
-  > .interface {
-    transition: opacity 500ms;
-    opacity: 1;
-  }
-
-  > .spinner {
-    display: none;
-  }
-}
-
-main {
-  background-color: #efefef;
-  margin: 0 auto;
-  margin-top: $headerHeight;
-  // max-width: $containerWidth;
-  min-height: calc(100vh - 80px - 200px);
-  width: 100%;
-
-  @media (max-width: 700px) {
-    min-height: calc(100vh - 60px - 200px);
-  }
-}
-
 .page-enter-active {
   transition: opacity 0.2s;
 }
@@ -121,81 +65,27 @@ main {
   opacity: 0;
 }
 
-.page-title {
-  border-bottom: 1px dotted lighten($primary, 20%);
-  margin-top: 32px;
-  margin-bottom: 32px;
-
-  h1 {
-    font-family: "Roboto", sans-serif;
-    font-size: 3rem;
-    font-weight: 100;
-    line-height: 1;
-    margin-bottom: 12px;
-    margin-top: 0;
-    padding-bottom: 0;
-
-    @media (max-width: 500px) {
-      font-size: 2rem;
-    }
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: #333;
-  font-weight: 400;
-}
-
 a {
-  color: $primary;
+  color: inherit;
   font-weight: 400;
   position: relative;
   text-decoration: none;
   transition: 0.1s;
 }
 
-.fancy {
-  cursor: pointer;
-
-  &:hover {
-    color: $accent;
-  }
-
-  &::after {
-    background: rgba($accent, 0.5);
-    content: "";
-    height: 1px;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    transform: translateY(-4px);
-    transition: height 0.1s, opacity 0.1s, transform 0.1s;
-    width: 100%;
-  }
-
-  &:hover,
-  &:focus {
-    &::after {
-      height: 2px;
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-}
-
-pre {
-  white-space: pre-wrap;
-}
-
 .lazy {
-  background-color: #cecece;
+  background-color: #333;
   position: relative;
-
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-origin: center;
+    background-repeat: no-repeat;
+  }
   img {
     backface-visibility: hidden;
     height: 100%;

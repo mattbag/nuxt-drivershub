@@ -48,7 +48,7 @@ export default {
 
   beforeMount () {
     if (this.featuredImage.source_url && this.article._embedded) {
-      let img = this.article._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url
+      let img = this.article._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url || null;
 
       Vibrant.from(img).getPalette((err, palette) => {
         if (!err) {

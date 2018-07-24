@@ -1,33 +1,41 @@
 <template>
-  <div class="wrap py4 px4">
-    <header class="mb4 px4">
+  <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
+    <header class="mb-4 p-4 w-full">
       <nuxt-link to="/">Home</nuxt-link>
         <span>/</span>
       <nuxt-link to="/blog">Blog</nuxt-link>
-
-      <h1>Blog</h1>
+      <h1 class="text-red">Blog</h1>
     </header>
 
-    <div class="sidebar px4">
-    <div class="py4 bg-white px4 mb4">
-sort by
+    <aside class="sidebar px-4 w-1/4">
+
+    <div class="py-4 bg-white px-4 mb-4">
+      <p class="uppercase font-bold">Sort by</p>
+      <select name="" id="" class="w-full block px-3 py-2 border-black border">
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+        <option value="date-newest">date:newest</option>
+        <option value="date-oldest">date:oldest</option>
+      </select>
     </div>
-    <div class="py4 bg-white px4 mb4">
-sort by
+    <div class="py-4 bg-white px-4 mb-4">
+      <p class="uppercase font-bold">Club</p>
     </div>
-    <div class="py4 bg-white px4 mb4">
-sort by
+    <div class="py-4 bg-white px-4 mb-4">
+      <p class="uppercase font-bold">Categories</p>
     </div>
-    </div>
-    <div class="articles px4">
-      <div class="bg-white py4">
-      <TheHero
+
+    </aside>
+
+    <section class="articles px-4 w-1/2">
+
+      <ArticleBig
         v-if="heroArticle"
         :hero-article="heroArticle"
       />
-      </div>
 
-      <ArticleList :articles="$store.state.articles"/>
+
+      <ArticleGrid :articles="$store.state.articles"/>
       <!-- <InfiniteLoading
         v-if="indexInfiniteLoading.enabled"
         ref="infiniteLoading"
@@ -45,19 +53,19 @@ sort by
           <div>No more articles!</div>
         </span>
       </InfiniteLoading> -->
-    </div>
+    </section>
 
-  <div class="sidebar px4">
-    <TheSidebar :featured-articles="$store.state.featuredArticles"/>
+  <div class="sidebar px-4">
+    <ArticleSidebar :featured-articles="$store.state.featuredArticles || $store.state.articles"/>
   </div>
 
   </div>
 </template>
 
 <script>
-import ArticleList from "~/components/ArticleList";
-import TheHero from "~/components/TheHero";
-import TheSidebar from "~/components/TheSidebar";
+import ArticleGrid from "~/components/ArticleGrid";
+import ArticleBig from "~/components/ArticleBig";
+import ArticleSidebar from "~/components/ArticleSidebar";
 import InfiniteLoading from "vue-infinite-loading/src/components/InfiniteLoading.vue";
 import Smile from "~/assets/svg/Smile.vue";
 import Spinner1 from "~/components/Spinner1.vue";
@@ -86,9 +94,9 @@ export default {
   },
 
   components: {
-    ArticleList,
-    TheHero,
-    TheSidebar,
+    ArticleGrid,
+    ArticleBig,
+    ArticleSidebar,
     InfiniteLoading,
     Smile,
     Spinner1
@@ -105,7 +113,7 @@ export default {
 
   head() {
     return {
-      title: `Home | ${this.$store.state.meta.name}`,
+      title: `BLOG | ${this.$store.state.meta.name}`,
       meta: [{ description: this.$store.state.meta.description }]
     };
   },
@@ -136,28 +144,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "~assets/css/vars.scss";
-@import "~assets/css/utils/space.scss";
-@import "~assets/css/grid.scss";
-
-.bg-white {
-  background-color: $white;
+<style>
+select{
+  appearance: none;
+  border-radius:0;
+  background-color:transparent;
 }
-header {
-  width: 100%;
-  h1 {
-    color: $secondary;
-    margin-top: 0;
-  }
-}
-.sidebar {
-  width: 25%;
-}
-.articles {
-  width: 50%;
-}
-</style>
-
-<style lang="scss">
 </style>

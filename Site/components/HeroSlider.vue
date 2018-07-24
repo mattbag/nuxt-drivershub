@@ -100,7 +100,7 @@ export default {
   },
   computed: {
     linePosition() {
-      return 68 * (this.currentSlide + 1 * .8);
+      return 68 * (this.currentSlide + 1 * 0.8);
     }
   }
 };
@@ -149,6 +149,7 @@ a {
       will-change: transform;
       pointer-events: none;
       hr {
+      border-bottom-width: 1px;
         margin: 0;
         border-color: $accent;
       }
