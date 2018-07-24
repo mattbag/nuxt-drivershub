@@ -4,7 +4,8 @@
   <ArticleSidebarRight />
 
     <transition name="slide-fade">
-      <article class="md:w-3/4 px-4">
+      <div class="md:w-3/4 px-4">
+      <article>
 
         <ArticleFeaturedImage
           v-if="featuredImage"
@@ -27,6 +28,11 @@
           </div>
         <!-- <div v-html="linkRGB"></div> -->
       </article>
+   <div class="py-4">
+      <h4 class="mb-4" v-if="$store.state.articles.length">You may also like</h4>
+      <ArticleGrid :columns="3" v-if="$store.state.articles.length" :articles="$store.state.articles"/>
+   </div>
+    </div>
     </transition>
 </div>
 </template>
@@ -38,6 +44,7 @@ import PageHeader from "~/components/PageHeader";
 import ArticleFeaturedImage from "~/components/ArticleFeaturedImage";
 import ArticleComments from "~/components/ArticleComments";
 import ArticleSidebarRight from "~/components/ArticleSidebarRight";
+import ArticleGrid from "~/components/ArticleGrid";
 
 // if (process.browser) {
 //   require("lightgallery.js");
@@ -51,7 +58,23 @@ export default {
       `${store.state.wordpressAPI}/wp/v2/posts?slug=${params.article}&_embed`
     );
     store.commit("setArticle", article.data[0]);
+
+    if (!store.state.articles.length) {
+      let articles = await app.$axios.get(
+        `${
+          store.state.wordpressAPI
+        }/wp/v2/posts?orderby=date&per_page=10&_embed`
+      );
+      store.commit("setArticles", articles.data);
+    }
+    // console.log(store)
   },
+
+  // data: function() {
+  //   return {
+  //     relatedArticles: null
+  //   };
+  // },
 
   beforeMount() {
     if (this.featuredImage.source_url && this.article._embedded) {
@@ -66,6 +89,10 @@ export default {
       // });
     }
   },
+  // created() {
+  //   // this.relatedArticles = this.$store.state.featuredArticles;
+  //   console.log(this);
+  // },
 
   mixins: {
     longTimestamp: Function
@@ -75,7 +102,8 @@ export default {
     PageHeader,
     ArticleFeaturedImage,
     ArticleComments,
-    ArticleSidebarRight
+    ArticleSidebarRight,
+    ArticleGrid
   },
 
   computed: {
@@ -120,30 +148,29 @@ export default {
   },
 
   methods: {
-    expandFeaturedImage() {
-      if (!this.expanded) {
-        this.$router.push({ query: { image: null } });
-      } else {
-        this.$router.push({ query: null });
-      }
-      this.expanded = !this.expanded;
-    },
-    loadFeaturedImageExpanded() {
-      if (this.$route.query.image === null) {
-        this.expanded = true;
-      }
-    },
-    gallery() {
-      let galleries = document.querySelectorAll(".content > .gallery");
-
-      for (let i = 0; i < galleries.length; i++) {
-        // eslint-disable-next-line
-        lightGallery(galleries[i], {
-          download: false,
-          selector: "a"
-        });
-      }
-    }
+    // expandFeaturedImage() {
+    //   if (!this.expanded) {
+    //     this.$router.push({ query: { image: null } });
+    //   } else {
+    //     this.$router.push({ query: null });
+    //   }
+    //   this.expanded = !this.expanded;
+    // },
+    // loadFeaturedImageExpanded() {
+    //   if (this.$route.query.image === null) {
+    //     this.expanded = true;
+    //   }
+    // },
+    // gallery() {
+    //   let galleries = document.querySelectorAll(".content > .gallery");
+    //   for (let i = 0; i < galleries.length; i++) {
+    //     // eslint-disable-next-line
+    //     lightGallery(galleries[i], {
+    //       download: false,
+    //       selector: "a"
+    //     });
+    //   }
+    // }
   },
 
   mounted() {
@@ -154,5 +181,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

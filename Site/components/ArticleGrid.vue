@@ -1,7 +1,7 @@
 <template>
   <div class="article-list flex flex-wrap -mx-4">
 
-    <article class="mb-8 md:w-1/2 px-4" v-for="article in articles" :key="article.id">
+    <article class="mb-8 md:w-1/2 px-4" :class="`md:w-1/${columns}`" v-for="article in articles" :key="article.id">
         <div class="bg-white h-full">
         <nuxt-link :to="`/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
           <div class="featured lazy" v-if="featuredImage(article)">
@@ -34,10 +34,15 @@ export default {
     Spinner1
   },
   props: {
-    articles: Array
+    articles: Array,
+    columns: {
+      type: Number,
+      default: 2
+    }
   },
   mixins: {
-    shortTimestamp: Function
+    shortTimestamp: Function,
+    featuredImage: Function
   },
   methods: {
     featuredImage(article) {

@@ -30,12 +30,15 @@
           <div>No more articles!</div>
         </span>
       </InfiniteLoading> -->
+      
     </section>
 
   <div class="w-1/4 px-4">
     <ArticleSidebar v-if="$store.state.featuredArticles.length" :featured-articles="$store.state.featuredArticles"/>
     <ArticleSidebar v-else :featured-articles="$store.state.articles"/>
   </div>
+
+    
 
   </div>
 </template>
