@@ -19,7 +19,7 @@
     </div>
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Club</p>
-      <label v-for="c in clubs" :key="'club_filter_' + c.id" class="block">
+      <label v-for="c in clubs" :key="'club_filter_' + c.id" class="block cursor-pointer">
         <input type="checkbox" name="" id="" class="mr-2">
         <span>{{c.title.rendered}}</span>
       </label>

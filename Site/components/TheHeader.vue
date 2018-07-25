@@ -6,9 +6,9 @@
       </nuxt-link>
       <nav>
         <nuxt-link to="/" exact>Home</nuxt-link>
-        <div class="drop mx-8">
+        <div class="drop mx-8 py-2" @mouseover="drop = true" @mouseleave="drop=false">
           <nuxt-link to="/clubs" class="drop__toggle">Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
-          <div class="drop__menu bg-black p-4">
+          <div class="drop__menu bg-black p-4" v-show="drop">
             <ul class="list-reset">
               <li v-for="c in clubs" :key="c.id"><nuxt-link to="/club">{{c.title.rendered}}</nuxt-link></li>
             </ul>
@@ -39,13 +39,27 @@
 <script>
 import btnLink from "@/components/atoms/btn-link";
 import caret from "@/components/atoms/caret";
+import { setTimeout } from "timers";
 
 export default {
   components: {
     btnLink,
     caret
   },
- 
+  data() {
+    return {
+      drop: false
+    };
+  },
+  methods: {
+    toggleDrop() {
+      setTimeout(_ => {
+        this.drop = !this.drop;
+      },300);
+      // }, this.drop ? 300 : 0);
+    }
+  },
+
   computed: {
     meta() {
       return this.$store.state.meta;
@@ -129,21 +143,21 @@ header {
 .drop {
   display: inline-block;
   position: relative;
-  &__toggle {
-    &:focus,
-    &:hover {
-      outline: none;
-      // border-bottom:2px solid $accent;
-      + .drop__menu {
-        display: block;
-      }
-    }
-  }
+  // &__toggle {
+  //   &:focus,
+  //   &:hover {
+  //     outline: none;
+  //     // border-bottom:2px solid $accent;
+  //     + .drop__menu {
+  //       display: block;
+  //     }
+  //   }
+  // }
   &__menu {
     width: 14rem;
-    display: none;
+    // display: none;
     position: absolute;
-    top: 2rem;
+    top: 2.4rem;
   }
 }
 </style>

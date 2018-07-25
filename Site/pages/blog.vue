@@ -11,7 +11,6 @@
         :hero-article="heroArticle"
       />
 
-
       <ArticleGrid :articles="$store.state.articles"/>
       <!-- <InfiniteLoading
         v-if="indexInfiniteLoading.enabled"

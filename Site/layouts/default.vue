@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 
 html {
-  background-color: #f5f5f5;
+  background-color: $black;
   box-sizing: border-box;
   color: $primary;
   font-family: "Roboto", sans-serif;
@@ -50,6 +50,7 @@ html {
 body {
   // font-size: 0.85rem;
   // font-weight: 300;
+  background-color: $gray;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
