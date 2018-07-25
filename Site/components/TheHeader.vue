@@ -29,7 +29,7 @@
         <!-- <nuxt-link to="/login">login</nuxt-link> -->
         <btn-link 
           :text="'Join'"
-          :url="'/login'"
+          :url="'/join'"
           ></btn-link>
       </nav>
     </div>

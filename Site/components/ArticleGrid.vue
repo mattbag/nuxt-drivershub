@@ -20,7 +20,7 @@ export default {
   props: {
     articles: Array,
     columns: {
-      type: Number,
+      type: [Number, String],
       default: 2
     }
   },

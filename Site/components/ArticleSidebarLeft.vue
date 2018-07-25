@@ -5,7 +5,7 @@
       <p class="uppercase font-bold mb-2">Sort by</p>
 
       <div class="inline-block relative w-full">
-        <select class="block appearance-none w-full bg-white border border-black px-4 py-2 pr-8">
+        <select class="block appearance-none w-full bg-white rounded-none border border-black pl-2 py-2 pr-8">
           <option value="a-z">A-Z</option>
           <option value="z-a">Z-A</option>
           <option value="date-newest">date:newest</option>
