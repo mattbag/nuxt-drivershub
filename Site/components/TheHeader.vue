@@ -6,9 +6,9 @@
       </nuxt-link>
       <nav>
         <nuxt-link to="/" exact>Home</nuxt-link>
-        <div class="drop mx-8 py-2" @mouseover="drop = true" @mouseleave="drop=false">
-          <nuxt-link to="/clubs" class="drop__toggle">Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
-          <div class="drop__menu bg-black p-4" v-show="drop">
+        <div class="drop mx-8 py-2">
+          <nuxt-link to="/clubs" >Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
+          <div class="drop__menu bg-black p-4">
             <ul class="list-reset">
               <li v-for="c in clubs" :key="c.id"><nuxt-link to="/club">{{c.title.rendered}}</nuxt-link></li>
             </ul>
@@ -52,12 +52,12 @@ export default {
     };
   },
   methods: {
-    toggleDrop() {
-      setTimeout(_ => {
-        this.drop = !this.drop;
-      },300);
+    // toggleDrop() {
+    //   setTimeout(_ => {
+    //     this.drop = !this.drop;
+    //   },300);
       // }, this.drop ? 300 : 0);
-    }
+    // }
   },
 
   computed: {
@@ -143,19 +143,18 @@ header {
 .drop {
   display: inline-block;
   position: relative;
-  // &__toggle {
-  //   &:focus,
-  //   &:hover {
-  //     outline: none;
-  //     // border-bottom:2px solid $accent;
-  //     + .drop__menu {
-  //       display: block;
-  //     }
-  //   }
-  // }
+ 
+    &:hover {
+      outline: none;
+      // border-bottom:2px solid $accent;
+      > .drop__menu {
+        display: block;
+      }
+    }
+
   &__menu {
     width: 14rem;
-    // display: none;
+    display: none;
     position: absolute;
     top: 2.4rem;
   }

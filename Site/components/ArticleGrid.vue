@@ -24,15 +24,8 @@ export default {
       default: 2
     }
   },
-  mixins: {
-    shortTimestamp: Function
-  }
+  // mixins: {
+  //   shortTimestamp: Function
+  // }
 };
 </script>
-
-<style lang="scss" scoped>
-@import "~assets/css/vars.scss";
-</style>
-
-<style lang="scss">
-</style>
