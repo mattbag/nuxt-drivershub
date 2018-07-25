@@ -31,7 +31,7 @@
                     <br>
                     <btn-link 
                     :text="'Find our more'"
-                    :url="'/blog'"
+                    :url="'/club/' + club.slug"
                     ></btn-link>
                 </div>
                 <!-- </transition-group> -->
@@ -81,9 +81,9 @@ export default {
     Spinner1,
     btnLink
   },
-  props: {
-    clubs: Array
-  },
+  // props: {
+  //   clubs: Array
+  // },
   mixins: {
     shortTimestamp: Function
   },
@@ -104,6 +104,10 @@ export default {
   computed: {
     linePosition() {
       return 68 * (this.currentSlide + 1 * 0.8);
+    },
+    clubs() {
+      // console.log(this.$store.state.clubs);
+      return this.$store.state.clubs;
     }
   }
 };

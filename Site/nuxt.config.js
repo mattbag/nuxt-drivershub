@@ -60,5 +60,9 @@ module.exports = {
     { src: '~plugins/mixins' }
   ],
 
-  vendor: ['lightgallery.js']
+  vendor: ['lightgallery.js'],
+
+  router:{
+    middleware: ['getClubs']
+  }
 }

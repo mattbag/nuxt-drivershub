@@ -1,5 +1,5 @@
 <template>
-<HeroSlider :clubs="$store.state.clubs"/>
+<HeroSlider />
 
 </template>
 <script>
@@ -7,21 +7,26 @@ import HeroSlider from '~/components/HeroSlider'
 
 export default {
   async asyncData({ app, store, params }) {
-    if (!store.state.articles.length) {
-      let clubs = await app.$axios.get(
-        `${store.state.wordpressAPI}/wp/v2/club?_embed`
-      );
-      store.commit("setClubs", clubs.data);
-    }
+    // if (!store.state.clubs.length) {
+    //   let clubs = await app.$axios.get(
+    //     `${store.state.wordpressAPI}/wp/v2/club?_embed`
+    //   );
+    //   store.commit("setClubs", clubs.data);
+    // }
   },
 
   components: {
     HeroSlider
   },
 
-  computed: {},
+  computed: {
+    // clubs() {
+    //   // console.log(this.$store.state.clubs);
+    //   return this.$store.state.clubs;
+    // }
+  },
   mounted() {
-    // console.log(this.$store.state.clubs[0])
+    // console.log(this.$store.state.clubs)
   },
   head() {
     return {

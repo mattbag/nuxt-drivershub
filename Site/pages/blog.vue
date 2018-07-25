@@ -56,7 +56,7 @@ import Spinner1 from "~/components/Spinner1.vue";
 
 export default {
   async asyncData({ app, store, params }) {
-    console.log('ctx ',store.state)
+    // console.log('ctx ',store.state)
     if (!store.state.articles.length) {
       let articles = await app.$axios.get(
         `${
@@ -78,7 +78,12 @@ export default {
     }
   },
 
- 
+  //  data() {
+  //   return {
+  //      browser: process.browser
+  //   };
+  // },
+
   components: {
     PageHeader,
     ArticleGrid,
@@ -94,6 +99,14 @@ export default {
     heroArticle() {
       return this.$store.state.articles[0];
     },
+    // spliceArticles() {
+    //   let res = this.$store.state.articles;
+    //   debugger;
+    //   return res.shift();
+    // },
+    // isBrowser(){
+    //   return process.browser
+    // }
     // indexInfiniteLoading() {
     //   return this.$store.state.indexInfiniteLoading;
     // }
@@ -109,7 +122,6 @@ export default {
   methods: {
     // moreArticles($state) {
     //   this.indexInfiniteLoading.page++;
-
     //   this.$axios
     //     .get(
     //       `${
@@ -133,9 +145,9 @@ export default {
 </script>
 
 <style>
-select{
+select {
   appearance: none;
-  border-radius:0;
-  background-color:transparent;
+  border-radius: 0;
+  background-color: transparent;
 }
 </style>

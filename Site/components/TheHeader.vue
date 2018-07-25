@@ -45,11 +45,13 @@ export default {
     btnLink,
     caret
   },
+ 
   computed: {
     meta() {
       return this.$store.state.meta;
     },
     clubs() {
+      // console.log(this.$store.state.clubs);
       return this.$store.state.clubs;
     }
   },
@@ -130,7 +132,7 @@ header {
   &__toggle {
     &:focus,
     &:hover {
-      outline:none;
+      outline: none;
       // border-bottom:2px solid $accent;
       + .drop__menu {
         display: block;
@@ -141,7 +143,7 @@ header {
     width: 14rem;
     display: none;
     position: absolute;
-    top:2rem;
+    top: 2rem;
   }
 }
 </style>
