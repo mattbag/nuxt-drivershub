@@ -6,7 +6,14 @@
       </nuxt-link>
       <nav>
         <nuxt-link to="/" exact>Home</nuxt-link>
-        <nuxt-link to="/clubs">Clubs</nuxt-link>
+        <div class="drop mx-8">
+          <nuxt-link to="/clubs" class="drop__toggle">Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
+          <div class="drop__menu bg-black p-4">
+            <ul class="list-reset">
+              <li v-for="c in clubs" :key="c.id"><nuxt-link to="/club">{{c.title.rendered}}</nuxt-link></li>
+            </ul>
+          </div>
+        </div>
         <nuxt-link to="/events">events</nuxt-link>
         <nuxt-link to="/sponsors">sponsors</nuxt-link>
         <nuxt-link to="/blog" exact>Blog</nuxt-link>
@@ -31,14 +38,19 @@
 
 <script>
 import btnLink from "@/components/atoms/btn-link";
+import caret from "@/components/atoms/caret";
 
 export default {
   components: {
-    btnLink
+    btnLink,
+    caret
   },
   computed: {
     meta() {
       return this.$store.state.meta;
+    },
+    clubs() {
+      return this.$store.state.clubs;
     }
   },
 
@@ -73,7 +85,6 @@ header {
     }
   }
 
-
   nav {
     flex-shrink: 0;
 
@@ -82,10 +93,11 @@ header {
     }
   }
 
+  // .drop__toggle,
   a:not(.btn) {
     border-color: $white;
     color: $white;
-    font-weight: 300;
+    font-weight: bold;
     text-decoration: none;
     transition: color 0.1s, border-color 0.1s;
     text-transform: uppercase;
@@ -98,7 +110,7 @@ header {
 
     &.nuxt-link-active:not(.always-inactive) {
       padding-bottom: 4px;
-      border-bottom: 2px solid;
+      border-bottom: 1px solid;
       color: $accent;
       border-color: $accent;
     }
@@ -110,6 +122,26 @@ header {
         margin-left: 1rem;
       }
     }
+  }
+}
+.drop {
+  display: inline-block;
+  position: relative;
+  &__toggle {
+    &:focus,
+    &:hover {
+      outline:none;
+      // border-bottom:2px solid $accent;
+      + .drop__menu {
+        display: block;
+      }
+    }
+  }
+  &__menu {
+    width: 14rem;
+    display: none;
+    position: absolute;
+    top:2rem;
   }
 }
 </style>
