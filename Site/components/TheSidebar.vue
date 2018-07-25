@@ -49,7 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/vars.scss';
 
 aside {
   // min-width: 360px;
@@ -141,7 +140,6 @@ aside {
       }
 
       .meta {
-        font-family: 'Roboto', sans-serif;
         font-size: 0.75rem;
         font-weight: 400;
         margin-bottom: 12px;

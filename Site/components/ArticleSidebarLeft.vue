@@ -12,7 +12,8 @@
           <option value="date-oldest">date:oldest</option>
         </select>
         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-black">
-          <svg class="fill-current" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+
+          <svg aria-hidden="true" width="1rem" height="1rem" data-prefix="fas" data-icon="caret-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="fill-current"><path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
         </div>
       </div>
 

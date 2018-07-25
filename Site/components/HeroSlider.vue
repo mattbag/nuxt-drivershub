@@ -1,8 +1,8 @@
 <template>
   <section class="hero">
-
+  <Spinner1 v-show="loading"/>
     <!-- You can find this swiper instance object in current component by the "mySwiper"  -->
-  <div v-swiper:mySwiper="swiperOption" fade>
+  <div v-show="!loading" v-swiper:mySwiper="swiperOption" fade>
     <div class="swiper-wrapper">
       <div class="hero__slide swiper-slide" :key="'slide__' +club.id" v-for="(club,i) in clubs" >
         <!-- <img :src="club._embedded['wp:featuredmedia'][0].source_url"> -->
@@ -14,7 +14,7 @@
     <!-- <div class="swiper-pagination swiper-pagination-bullets"></div> -->
   </div>
    <div class="hero__over"></div>
-   <div class="hero__controls">
+   <div v-show="!loading" class="hero__controls">
    <div class="hero__controls--left">
         <div class="hero__controls--line" :style="{transform: `translateY(${linePosition}px)`}"><hr /></div>
         <ul class="hero__list">
@@ -25,7 +25,6 @@
     </div>
     <div class="hero__controls--right">
                 <!-- <transition-group mode="out-in"> -->
-
                 <div class="hero__panel" v-show="currentSlide == i" :key="'panel__' +club.id" v-for="(club,i) in clubs" >
                     <h2>{{club.acf.long_title || club.title.rendered}}</h2>
                     <div v-html="club.content.rendered"></div>
@@ -35,7 +34,6 @@
                     :url="'/blog'"
                     ></btn-link>
                 </div>
-
                 <!-- </transition-group> -->
                 
             </div>
@@ -52,6 +50,7 @@ import btnLink from "@/components/atoms/btn-link";
 
 export default {
   data: () => ({
+    loading: true,
     currentSlide: 0,
     swiperOption: {
       effect: "fade",
@@ -63,10 +62,13 @@ export default {
       //   dynamicBullets: true
       // },
       on: {
+        // arrow function can access the component this
         init() {
-          // console.log("onSlideChangeEnd", this);
+          // this.loading = false;
+          // console.log("inInit", this);
         },
         slideChange() {
+          // console.log("onSlideChangeEnd", this);
           // this.currentSlide = this.realIndex;
         }
         // tap() {
@@ -89,12 +91,15 @@ export default {
     changeSlide(i) {
       this.mySwiper.slideTo(i);
       this.currentSlide = i;
-      //   console.log(this);
+        // console.log(this.clubs[i]._embedded['wp:featuredmedia'][0].source_url);
       //   this.VueperSlides.goToSlide(i);
     }
   },
   mounted() {
-    this.mySwiper.slideTo(0);
+    // this.mySwiper.slideTo(0);
+    this.changeSlide(0)
+    this.loading = false;
+    // console.log(this.clubs)
   },
   computed: {
     linePosition() {
@@ -105,7 +110,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~assets/css/vars.scss";
 
 $hero-pad: 2rem;
 
@@ -188,5 +192,11 @@ $hero-pad: 2rem;
     height: 100%;
     background-color: transparentize(black, 0.5);
   }
+}
+.spinner{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0)
 }
 </style>

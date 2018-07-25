@@ -26,7 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~assets/css/vars.scss";
 
 html {
   background-color: #f5f5f5;

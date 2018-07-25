@@ -42,7 +42,7 @@ import * as Vibrant from "node-vibrant";
 
 import PageHeader from "~/components/PageHeader";
 import ArticleFeaturedImage from "~/components/ArticleFeaturedImage";
-import ArticleComments from "~/components/ArticleComments";
+// import ArticleComments from "~/components/ArticleComments";
 import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
 import ArticleGrid from "~/components/ArticleGrid";
 
@@ -101,7 +101,7 @@ export default {
   components: {
     PageHeader,
     ArticleFeaturedImage,
-    ArticleComments,
+    // ArticleComments,
     ArticleSidebarLeft,
     ArticleGrid
   },
@@ -134,7 +134,7 @@ export default {
 
   data() {
     return {
-      disqusReady: false,
+      // disqusReady: false,
       expanded: false,
       linkRGB: {}
     };

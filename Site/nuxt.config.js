@@ -14,12 +14,12 @@ module.exports = {
       //   })
       // }
     },
-    plugins: [
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ],
-    vendor: [
-      'moment'
-    ]
+    // plugins: [
+    //   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    // ],
+    // vendor: [
+    //   'moment'
+    // ]
   },
   css: [
     // 'normalize.css/normalize.css',
@@ -45,9 +45,11 @@ module.exports = {
 
   modules: [
     '@nuxtjs/axios',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-93904346-3'
-    }]
+    // ['@nuxtjs/google-analytics', {
+    //   id: 'UA-93904346-3'
+    // }]
+    // https://github.com/anteriovieira/nuxt-sass-resources-loader
+    ['nuxt-sass-resources-loader', '@/assets/css/vars.scss']
   ],
 
   plugins: [

@@ -49,8 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/css/vars.scss";
-
 header {
   // font-family: "Roboto", sans-serif;
   left: 0;
@@ -101,8 +99,8 @@ header {
     &.nuxt-link-active:not(.always-inactive) {
       padding-bottom: 4px;
       border-bottom: 2px solid;
-      color: yellow;
-      border-color: yellow;
+      color: $accent;
+      border-color: $accent;
     }
 
     & + a {
