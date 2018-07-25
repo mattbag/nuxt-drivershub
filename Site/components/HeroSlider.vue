@@ -16,12 +16,10 @@
    <div class="hero__over"></div>
    <div class="hero__controls">
    <div class="hero__controls--left">
-        <div class="hero__controls--line" :style="{transform: `translateY(${linePosition}px)`}">
-                    <hr />
-                </div>
+        <div class="hero__controls--line" :style="{transform: `translateY(${linePosition}px)`}"><hr /></div>
         <ul class="hero__list">
-            <li class="hero__list--item" v-for="(club,i) in clubs"
-    :key="'toggle__' +club.id"><a @click.prevent="changeSlide(i)">{{club.title.rendered}}</a></li>
+            <li class="hero__list--item cursor-pointer" v-for="(club,i) in clubs"
+            :key="'toggle__' +club.id"><a @click.prevent="changeSlide(i)">{{club.title.rendered}}</a></li>
         </ul>
 
     </div>
@@ -110,10 +108,6 @@ export default {
 @import "~assets/css/vars.scss";
 
 $hero-pad: 2rem;
-a {
-  cursor: pointer;
-  color: inherit;
-}
 
 .hero {
   margin-top: -$headerHeight;

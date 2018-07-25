@@ -1,7 +1,7 @@
 <template>
-  <header :style="{backgroundColor: $route.name != 'index' ? 'black' : ''}">
+  <header class="border-b border-yellow" :class="{'bg-black': $route.name != 'index'}">
     <div>
-      <nuxt-link class="blog-title" to="/" @click.prevent="homeScrollTop">
+      <nuxt-link class="always-inactive mr-8" to="/" @click.prevent="homeScrollTop">
         <span>{{meta.name}}</span>
       </nuxt-link>
       <nav>
@@ -52,7 +52,7 @@ export default {
 @import "~assets/css/vars.scss";
 
 header {
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
   left: 0;
   position: fixed;
   top: 0;
@@ -75,13 +75,6 @@ header {
     }
   }
 
-  .blog-title {
-    margin-right: 2rem;
-
-    @media (max-width: 700px) {
-      margin-right: 1rem;
-    }
-  }
 
   nav {
     flex-shrink: 0;
@@ -105,9 +98,11 @@ header {
       border-color: $accent;
     }
 
-    &.nuxt-link-active:not(.blog-title) {
+    &.nuxt-link-active:not(.always-inactive) {
       padding-bottom: 4px;
       border-bottom: 2px solid;
+      color: yellow;
+      border-color: yellow;
     }
 
     & + a {

@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link :to="url" class="btn uppercase font-bold px-8 py-2" :class="classes">{{text}}</nuxt-link>
+    <nuxt-link :to="url" class="btn uppercase font-bold px-8 py-3" :class="classes">{{text}}</nuxt-link>
 </template>
 <script>
 export default {
@@ -11,7 +11,7 @@ export default {
     classes: {
       type: String,
       required: false,
-      default: "bg-white text-black"
+      default: "bg-white text-black text-sm"
     },
     url: {
       type: String,

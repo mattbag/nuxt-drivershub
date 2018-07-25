@@ -3,7 +3,7 @@
     <!-- <Spinner1/> -->
     <div class="interface">
       <TheHeader/>
-      <main role="main" class="py-2">
+      <main role="main" :class="$route.name != 'index' && 'py-2'">
         <nuxt/>
       </main>
       <TheFooter v-if="$route.name != 'index'"/>

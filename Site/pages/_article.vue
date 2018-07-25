@@ -1,7 +1,7 @@
 <template>
 <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
  <page-header :heading="article.title.rendered"/>
-  <ArticleSidebarRight />
+  <ArticleSidebarLeft />
 
     <transition name="slide-fade">
       <div class="md:w-3/4 px-4">
@@ -30,7 +30,7 @@
       </article>
    <div class="py-4">
       <h4 class="mb-4" v-if="$store.state.articles.length">You may also like</h4>
-      <ArticleGrid :columns="3" v-if="$store.state.articles.length" :articles="$store.state.articles"/>
+      <ArticleGrid :columns="3" v-if="$store.state.articles.length" :articles="$store.state.articles.slice(0,3)"/>
    </div>
     </div>
     </transition>
@@ -43,7 +43,7 @@ import * as Vibrant from "node-vibrant";
 import PageHeader from "~/components/PageHeader";
 import ArticleFeaturedImage from "~/components/ArticleFeaturedImage";
 import ArticleComments from "~/components/ArticleComments";
-import ArticleSidebarRight from "~/components/ArticleSidebarRight";
+import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
 import ArticleGrid from "~/components/ArticleGrid";
 
 // if (process.browser) {
@@ -102,7 +102,7 @@ export default {
     PageHeader,
     ArticleFeaturedImage,
     ArticleComments,
-    ArticleSidebarRight,
+    ArticleSidebarLeft,
     ArticleGrid
   },
 

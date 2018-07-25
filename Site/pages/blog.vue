@@ -2,7 +2,7 @@
   <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
     <page-header heading="Blog"/>
 
-    <ArticleSidebarRight />
+    <ArticleSidebarLeft />
 
     <section class="articles px-4 w-1/2">
 
@@ -48,7 +48,7 @@ import PageHeader from "~/components/PageHeader";
 import ArticleGrid from "~/components/ArticleGrid";
 import ArticleBig from "~/components/ArticleBig";
 import ArticleSidebar from "~/components/ArticleSidebar";
-import ArticleSidebarRight from "~/components/ArticleSidebarRight";
+import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
 
 // import InfiniteLoading from "vue-infinite-loading/src/components/InfiniteLoading.vue";
 // import Smile from "~/assets/svg/Smile.vue";
@@ -83,7 +83,7 @@ export default {
     ArticleGrid,
     ArticleBig,
     ArticleSidebar,
-    ArticleSidebarRight,
+    ArticleSidebarLeft,
     // InfiniteLoading,
     // Smile,
     Spinner1
