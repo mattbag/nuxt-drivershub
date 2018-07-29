@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default function ({ store, route, redirect }) {
     if (!store.state.clubs) {
-        console.log('mdl ok')
+        // console.log('plugin yes')
         axios.get(
             `${store.state.wordpressAPI}/wp/v2/club?_embed`
         ).then(function (response) {

@@ -35,3 +35,8 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+# Things to try
+
+## https://codeburst.io/nuxt-authentication-from-scratch-a7a024c7201b
+## https://medium.com/vue-mastery/best-practices-for-nuxt-js-seo-32399c49b2e5

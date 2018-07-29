@@ -53,6 +53,7 @@ module.exports = {
   ],
 
   plugins: [
+    { src: '~plugins/getSiteShared.js', ssr: false },
     { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/vue-lazyload', ssr: false },
     { src: '~plugins/vue-scrollto', ssr: false },
@@ -60,9 +61,9 @@ module.exports = {
     { src: '~plugins/mixins' }
   ],
 
-  vendor: ['lightgallery.js'],
+  // vendor: ['lightgallery.js'],
 
-  router:{
-    middleware: ['getClubs']
-  }
+  // router:{
+  //   middleware: ['getClubs']
+  // }
 }

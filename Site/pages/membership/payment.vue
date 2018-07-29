@@ -1,23 +1,22 @@
 <template>
   <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
     <section class="px-4 lg:w-1/2 mx-auto">
- <br>
-   <h2 class="text-red">Join</h2>
- <br>
+    <br>
+   <h2 class="text-red">Summary and Payment</h2>
+    <br>
+ 
 <div class="bg-white p-4 mb-8">
-  <h1 class="text-2xl mt-0">Choose Clubs</h1>
+  <h1 class="text-2xl mt-0">Summary</h1>
   <br>
   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, quae.</p>
-
-<div class="py-2">
-
-  <label v-for="c in clubs" :key="'club_filter_' + c.id" class="block cursor-pointer mb-2">
-        <input type="checkbox" name="" id="" class="mr-2">
-        <span>{{c.title.rendered}}</span>
-  </label>
-
-</div>
-  <small>disclaimer</small>
+<p>Club1 </p>
+<p>Club2 </p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eveniet aliquid eligendi necessitatibus quos quibusdam dolorum recusandae nulla, molestiae illo quasi vel ex error. Sunt assumenda odit itaque in illum dolor dignissimos voluptates culpa earum! Ut quis aut officiis numquam!</p>
+<p>price</p>
+<br>
+ <nuxt-link to="/join" class="text-center inline-block bg-black hover:bg-red-dark w-full lg:w-1/2 text-yellow py-3 px-4">
+          edit
+        </nuxt-link>
 </div>
 
 <div class="bg-white p-4 mb-8">
@@ -41,19 +40,8 @@
 </div>
 
 <div class="bg-white p-4 mb-8">
-  <h1 class="text-2xl mt-0">Your details</h1>
-    <div class="py-2 flex flex-wrap -mx-4">
-      <div class="md:w-1/2 p-4">
-        <button class="bg-red hover:bg-red-dark w-full text-white py-3 px-4">
-          facebook
-        </button>
-      </div>
-       <div class="md:w-1/2 p-4">
-        <button class="bg-yellow hover:bg-yellow-dark w-full text-white py-3 px-4">
-          google
-        </button>
-      </div>  
-    </div>
+  <h1 class="text-2xl mt-0">Payment details</h1>
+   
 
     <div class="py-2 flex flex-wrap -mx-4">
       <div class="p-4">
@@ -120,12 +108,9 @@
   </div>
     <div class="md:w-1/2">
     <br>
-     <!-- <button type="submit" class="bg-black hover:bg-red-dark w-full text-yellow py-3 px-4">
+     <button type="submit" class="bg-black hover:bg-red-dark w-full text-yellow py-3 px-4">
           NEXT
-        </button> -->
-         <nuxt-link to="/membership/payment" class="text-center inline-block bg-black hover:bg-red-dark w-full text-yellow py-3 px-4">
-          NEXT
-        </nuxt-link>
+        </button>
   </div>
 </form>
 </div>
