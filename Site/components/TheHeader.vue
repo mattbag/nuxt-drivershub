@@ -5,7 +5,7 @@
         <span>{{meta.name}}</span>
       </nuxt-link>
       <nav>
-        <nuxt-link to="/" exact>Home</nuxt-link>
+        <nuxt-link to="/home">Home</nuxt-link>
         <div class="drop mx-8 py-2">
           <nuxt-link to="/clubs" >Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
           <div class="drop__menu bg-black p-4">
