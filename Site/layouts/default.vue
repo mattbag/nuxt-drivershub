@@ -152,4 +152,11 @@ a {
   position: relative;
   margin: auto;
 }
+
+select {
+  appearance: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+
 </style>

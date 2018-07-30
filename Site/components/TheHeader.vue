@@ -10,7 +10,7 @@
           <nuxt-link to="/clubs" >Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
           <div class="drop__menu bg-black p-4">
             <ul class="list-reset">
-              <li v-for="c in clubs" :key="c.id"><nuxt-link to="/club">{{c.title.rendered}}</nuxt-link></li>
+              <li v-for="c in clubs" :key="c.id"><nuxt-link :to="'/clubs/'+ c.slug">{{c.title.rendered}}</nuxt-link></li>
             </ul>
           </div>
         </div>

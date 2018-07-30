@@ -142,11 +142,3 @@ export default {
   }
 };
 </script>
-
-<style>
-select {
-  appearance: none;
-  border-radius: 0;
-  background-color: transparent;
-}
-</style>
