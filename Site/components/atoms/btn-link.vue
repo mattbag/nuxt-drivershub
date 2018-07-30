@@ -11,7 +11,7 @@ export default {
     classes: {
       type: String,
       required: false,
-      default: "bg-yellow text-black"
+      default: ""
     },
     url: {
       type: String,

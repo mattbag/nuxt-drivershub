@@ -20,96 +20,54 @@
 </div>
 
 <div class="bg-white p-4 mb-8">
-  <h1 class="text-2xl mt-0">Choose Membership</h1>
-  <br>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, quae.</p>
-
-<div class="py-2 flex flex-wrap -mx-4">
-
- <div class="w-full md:w-1/2 p-4" v-for="m in memberships" :key="m.id">
-    <div class="border border-black p-4 cursor-pointer" @click="selectPlan(m.id)" :class="{'bg-black text-white shadow-lg':m.id == selectedPlan }">
-      <div class="w-16 h-16 mb-4 rounded-full bg-red">
-
-      </div>
-      <p class="font-bold text-xl">{{m.name}}</p>
-      <p>{{m.copy}}</p>
-      <p class="mt-4">A$ {{m.price}}/year</p>
-    </div>
- </div>
-</div>
-</div>
-
-<div class="bg-white p-4 mb-8">
   <h1 class="text-2xl mt-0">Payment details</h1>
-   
-
-    <div class="py-2 flex flex-wrap -mx-4">
-      <div class="p-4">
-        <span>OR</span>
-      </div>
-       <div class="pr-4 flex-grow self-center">
-        <hr class="w-full border-b border-black">
-      </div>
-    </div>
+  
+   <br>
     <form class="w-full max-w-md">
   <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
-        First Name
+        Cardholder Name
       </label>
-      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3 leading-tight" id="grid-first-name" type="text" placeholder="Jane">
+      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red py-3 px-4 mb-3 leading-tight" id="grid-first-name" type="text" placeholder="Jane">
       <p class="text-red text-xs italic">Please fill out this field.</p>
     </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
-        Last Name
-      </label>
-      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight" id="grid-last-name" type="text" placeholder="Doe">
-    </div>
+   
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
-        Password
+        Card Number
       </label>
-      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3 leading-tight" id="grid-password" type="password" placeholder="******************">
+      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter py-3 px-4 mb-3 leading-tight" id="grid-password" type="number" placeholder="0000000000000000">
       <p class="text-grey-dark text-xs italic">Make it as long and as crazy as you'd like</p>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-2">
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
-        City
+        Exp. Month
       </label>
-      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight" id="grid-city" type="text" placeholder="Albuquerque">
+      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter py-3 px-4 leading-tight" id="grid-city" type="text" placeholder="12">
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
-        State
+     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
+        Exp. Year
       </label>
-      <div class="relative">
-        <select class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight" id="grid-state">
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
-        </select>
-        <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-        </div>
-      </div>
+      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter py-3 px-4 leading-tight" id="grid-city" type="text" placeholder="2030">
     </div>
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
-        Zip
+        CVV
       </label>
-      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 leading-tight" id="grid-zip" type="text" placeholder="90210">
+      <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter py-3 px-4 leading-tight" id="grid-zip" type="text" placeholder="000">
     </div>
 
   </div>
     <div class="md:w-1/2">
     <br>
-     <button type="submit" class="bg-black hover:bg-red-dark w-full text-yellow py-3 px-4">
-          NEXT
+     <button type="submit" class="btn bg-black w-full text-yellow">
+          PAY $99.99
         </button>
   </div>
 </form>

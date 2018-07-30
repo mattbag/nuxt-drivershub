@@ -68,11 +68,30 @@
 
   .btn{
     @apply font-bold;
-    @apply py-2;
+    @apply py-3;
     @apply px-4;
     @apply text-center;
     @apply uppercase;
+    /* @apply bg-black; */
+    /* @apply text-yellow; */
     @apply text-sm;
     @apply inline-block;
     min-width: 8rem;
+  }
+
+  .input{
+    /* appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter py-3 px-4 mb-3 leading-tight */
+    @apply appearance-none;
+    @apply block;
+    @apply w-full;
+    @apply w-full;
+    @apply border;
+    @apply border-grey-dark;
+    @apply py-3;
+    @apply px-4;
+    @apply mb-2;
+  }
+  .input:focus{
+    @apply border-yellow;
+    outline:none
   }

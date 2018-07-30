@@ -50,7 +50,7 @@ html {
 body {
   // font-size: 0.85rem;
   // font-weight: 300;
-  background-color: $gray;
+  background-color: $gray-light;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

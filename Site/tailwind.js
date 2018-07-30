@@ -400,6 +400,7 @@ module.exports = {
     // borderColors: Object.assign({ default: colors['grey-light'] }, colors),
     borderColors: {
       'black': colors['black'],
+      'grey-dark': colors['grey-dark'],
       'white': colors['white'],
       'yellow': colors['yellow'],
       'red': colors['red']

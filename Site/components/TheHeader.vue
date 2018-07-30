@@ -25,12 +25,14 @@
 
     <div>
       <nav>
-        <nuxt-link to="/signup">signup</nuxt-link>
-        <!-- <nuxt-link to="/login">login</nuxt-link> -->
-        <btn-link 
+        <!-- <nuxt-link to="/signup">signup</nuxt-link> -->
+        <nuxt-link to="/login">login</nuxt-link>
+        <nuxt-link to="/join" class="btn bg-white join">join</nuxt-link>
+        <!-- <btn-link 
           :text="'Join'"
           :url="'/join'"
-          ></btn-link>
+          classes="bg-white text-black"
+          ></btn-link> -->
       </nav>
     </div>
   </header>
@@ -157,6 +159,12 @@ header {
     display: none;
     position: absolute;
     top: 2.4rem;
+  }
+}
+.btn{
+  &.join{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
   }
 }
 </style>
