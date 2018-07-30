@@ -45,22 +45,22 @@ var colors = {
     'transparent': 'transparent',
   
     'black': '#000',
-    'grey-darkest': '#364349',
-    'grey-darker': '#596a73',
-    'grey-dark': '#70818a',
-    'grey': '#9babb4',
-    'grey-light': '#dae4e9',
-    'grey-lighter': '#f3f7f9',
-    'grey-lightest': '#fafcfc',
+    // 'grey-darkest': '#364349',
+    // 'grey-darker': '#596a73',
+    'grey-dark': '#333',
+    'grey': '#9B9B9B',
+    'grey-light': '#F6F6F6',
+    // 'grey-lighter': '#f3f7f9',
+    // 'grey-lightest': '#fafcfc',
     'white': '#ffffff',
   
-    'red-darkest': '#420806',
-    'red-darker': '#6a1b19',
-    'red-dark': '#cc1f1a',
-    'red': '#e3342f',
-    'red-light': '#ef5753',
-    'red-lighter': '#f9acaa',
-    'red-lightest': '#fcebea',
+    // 'red-darkest': '#420806',
+    // 'red-darker': '#6a1b19',
+    // 'red-dark': '#cc1f1a',
+    'red': '#F01C25',
+    // 'red-light': '#ef5753',
+    // 'red-lighter': '#f9acaa',
+    // 'red-lightest': '#fcebea',
   
     // 'orange-darkest': '#542605',
     // 'orange-darker': '#7f4012',
@@ -70,13 +70,13 @@ var colors = {
     // 'orange-lighter': '#fcd9b6',
     // 'orange-lightest': '#fff5eb',
   
-    'yellow-darkest': '#453411',
-    'yellow-darker': '#684f1d',
-    'yellow-dark': '#f2d024',
-    'yellow': '#ffed4a',
-    'yellow-light': '#fff382',
-    'yellow-lighter': '#fff9c2',
-    'yellow-lightest': '#fcfbeb',
+    // 'yellow-darkest': '#453411',
+    // 'yellow-darker': '#684f1d',
+    // 'yellow-dark': '#f2d024',
+    'yellow': '#FECF2F',
+    // 'yellow-light': '#fff382',
+    // 'yellow-lighter': '#fff9c2',
+    // 'yellow-lightest': '#fcfbeb',
   
     // 'green-darkest': '#032d19',
     // 'green-darker': '#0b4228',
@@ -330,7 +330,13 @@ module.exports = {
     |
     */
   
-    textColors: colors,
+    // textColors: colors,
+    textColors: {
+      'black': colors['black'],
+      'white': colors['white'],
+      'yellow': colors['yellow'],
+      'red': colors['red']
+    },
   
     /*
     |-----------------------------------------------------------------------------
@@ -345,7 +351,13 @@ module.exports = {
     |
     */
   
-    backgroundColors: colors,
+    // backgroundColors: colors,
+    backgroundColors: {
+      'black': colors['black'],
+      'white': colors['white'],
+      'yellow': colors['yellow'],
+      'red': colors['red']
+    },
   
     /*
     |-----------------------------------------------------------------------------
@@ -385,7 +397,13 @@ module.exports = {
     |
     */
   
-    borderColors: Object.assign({ default: colors['grey-light'] }, colors),
+    // borderColors: Object.assign({ default: colors['grey-light'] }, colors),
+    borderColors: {
+      'black': colors['black'],
+      'white': colors['white'],
+      'yellow': colors['yellow'],
+      'red': colors['red']
+    },
   
     /*
     |-----------------------------------------------------------------------------

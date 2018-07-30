@@ -14,7 +14,7 @@
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eveniet aliquid eligendi necessitatibus quos quibusdam dolorum recusandae nulla, molestiae illo quasi vel ex error. Sunt assumenda odit itaque in illum dolor dignissimos voluptates culpa earum! Ut quis aut officiis numquam!</p>
 <p>price</p>
 <br>
- <nuxt-link to="/join" class="text-center inline-block bg-black hover:bg-red-dark w-full lg:w-1/2 text-yellow py-3 px-4">
+ <nuxt-link to="/join" class="btn bg-black text-yellow lg:w-1/2">
           edit
         </nuxt-link>
 </div>
