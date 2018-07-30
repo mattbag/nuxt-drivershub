@@ -1,6 +1,6 @@
 <template>
 <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
- <page-header v-if="artcile" :heading="article.title.rendered"/>
+ <page-header v-if="article" :heading="article.title.rendered"/>
   <ArticleSidebarLeft />
 
     <transition name="slide-fade">

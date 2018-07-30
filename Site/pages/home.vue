@@ -1,25 +1,25 @@
 <template>
   <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
-    <page-header heading="Your Portal" :breadcrumbs="[{url:'/', title: 'home'},{url:'/blog', title: 'blog'}]" />
+    <!-- <page-header heading="Your Portal" :breadcrumbs="[{url:'/', title: 'home'},{url:'/blog', title: 'blog'}]" /> -->
+    <page-header heading="Your Portal" />
     <no-ssr>
       <section class="px-4">
         <h3>Events</h3>
         <br>
         <GridEvent :articles="events" />
 
-
-    <nuxt-link to="/events" class="btn bg-black text-yellow">
-              see all events
-            </nuxt-link>
-      <hr class="border-t border-black my-6">
+        <nuxt-link to="/events" class="btn bg-black text-yellow">
+          see all events
+        </nuxt-link>
+        <hr class="border-t border-black my-6">
 
         <h3>Marketplace</h3>
         <br>
         <GridEvent :articles="$store.state.articles" />
 
-            <nuxt-link to="/store" class="btn bg-black text-yellow">
-              see marketplace
-            </nuxt-link>
+        <nuxt-link to="/store" class="btn bg-black text-yellow">
+          see marketplace
+        </nuxt-link>
 
         <div slot="Spinner"></div>
       </section>
@@ -50,7 +50,7 @@ export default {
       let events = await app.$axios.get(
         `${
           store.state.wordpressAPI
-         }/wp/v2/event?orderby=date&per_page=10&_embed`
+        }/wp/v2/event?orderby=date&per_page=10&_embed`
       );
       store.commit("setEvents", events.data);
     }
@@ -69,9 +69,9 @@ export default {
   },
 
   computed: {
-    events(){
+    events() {
       // console.log(this.$store.state.events)
-      return this.$store.state.events
+      return this.$store.state.events;
     }
   },
 

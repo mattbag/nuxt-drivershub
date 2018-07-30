@@ -1,7 +1,7 @@
 <template>
   <aside>
     <div class="inner-container">
-      <article class="mb-8" v-for="article in featuredArticles" :key="article.id">
+      <article class="mb-8" v-for="article in featuredArticles" :key="'featured_'+article.id">
         <nuxt-link :to="`/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
           <div class="featured lazy" v-if="featuredImage(article)">
             <div class="image-height" :style="{ paddingTop: featuredImage(article).height / featuredImage(article).width * 100 + '%' }"></div>

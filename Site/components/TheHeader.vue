@@ -14,7 +14,7 @@
             </ul>
           </div>
         </div>
-        <nuxt-link to="/events">events</nuxt-link>
+        <nuxt-link to="/calendar">calendar</nuxt-link>
         <nuxt-link to="/sponsors">sponsors</nuxt-link>
         <nuxt-link to="/blog" exact>Blog</nuxt-link>
         <nuxt-link to="/store">store</nuxt-link>

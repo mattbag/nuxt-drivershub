@@ -1,6 +1,6 @@
 <template>
  <article class="bg-white h-full">
-        <nuxt-link :to="`/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
+        <nuxt-link :to="`/events/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
           <div class="featured lazy" v-if="featuredImage(article)">
             <div class="image-height" :style="{ paddingTop: featuredImage(article).height / featuredImage(article).width * 100 + '%' }"></div>
             <img v-lazy="featuredImage(article).source_url" class="image"/>
