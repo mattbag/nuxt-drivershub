@@ -7,10 +7,18 @@
       <nav>
         <nuxt-link :to="user ? '/user' : '/login'">Home</nuxt-link>
         <div class="drop mx-8 py-2">
-          <nuxt-link to="/clubs" >Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
+          <nuxt-link to="/clubs"><span>Clubs</span>
+            <span style="vertical-align:middle">
+              <caret/>
+            </span>
+          </nuxt-link>
           <div class="drop__menu bg-black p-4">
             <ul class="list-reset">
-              <li v-for="c in clubs" :key="c.id"><nuxt-link :to="'/clubs/'+ c.slug">{{c.title.rendered}}</nuxt-link></li>
+              <li v-for="c in clubs" :key="c.id" class="club mb-1">
+                <nuxt-link :to="'/clubs/'+ c.slug">
+                  <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt" width="20" class="bg-white"> {{c.title.rendered}}
+                </nuxt-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -26,21 +34,34 @@
     <div>
       <nav v-if="user">
         <div class="drop mx-8 py-2">
-          <nuxt-link to="/profile" class="drop--icon">{{user.name}} <iuser/><caret/></nuxt-link>
+          <nuxt-link to="/user" class="always-inactive drop--icon">{{user.name}}
+            <iuser/>
+            <caret/>
+          </nuxt-link>
           <div class="drop__menu pin-r p-4 bg-grey-dark">
             <ul class="list-reset text-center">
-              <li><nuxt-link to="/user/photos">gallery</nuxt-link></li>
-              <li><nuxt-link to="/user">your profile</nuxt-link></li>
-              <li><nuxt-link to="/user">your marketplace</nuxt-link></li>
-              <li><nuxt-link to="/user">edit profile</nuxt-link></li>
-              <li><a class="cursor-pointer" @click.prevent="logout">Logout</a></li>
+              <li>
+                <nuxt-link to="/user/photos">gallery</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/user">your profile</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/user">your marketplace</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link to="/user">edit profile</nuxt-link>
+              </li>
+              <li>
+                <a class="cursor-pointer" @click.prevent="logout">Logout</a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
       <nav v-else>
         <!-- <nuxt-link to="/signup">signup</nuxt-link> -->
-        <nuxt-link to="/login">login</nuxt-link>
+        <nuxt-link to="/login" exact>login</nuxt-link>
         <nuxt-link to="/join" class="btn bg-white join">join</nuxt-link>
       </nav>
     </div>
@@ -69,13 +90,13 @@ export default {
     //   setTimeout(_ => {
     //     this.drop = !this.drop;
     //   },300);
-      // }, this.drop ? 300 : 0);
+    // }, this.drop ? 300 : 0);
     // }
-    logout(){
+    logout() {
       this.$store.commit("setUser", null);
       // this.$store.state.user;
       // console.log(this.$store.state.user)
-      this.$router.push('/')
+      this.$router.push("/");
     }
   },
 
@@ -99,6 +120,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.club{
+  display: inline-block;
+}
 header {
   // font-family: "Roboto", sans-serif;
   left: 0;
@@ -129,9 +153,6 @@ header {
     @media (max-width: 500px) {
       display: none;
     }
-    // svg{
-    //   width:2rem;
-    // }
   }
 
   // .drop__toggle,
@@ -149,8 +170,9 @@ header {
       border-color: $accent;
     }
 
-    &.nuxt-link-active:not(.always-inactive) {
-      padding-bottom: 4px;
+    // &.nuxt-link-exact-active:not(.always-inactive) {
+    &.nuxt-link-active:not(.always-inactive)  {
+      padding-bottom: 2px;
       border-bottom: 1px solid;
       color: $accent;
       border-color: $accent;
@@ -168,35 +190,39 @@ header {
 .drop {
   display: inline-block;
   position: relative;
- 
-    &:hover {
-      outline: none;
-      // border-bottom:2px solid $accent;
-      > .drop__menu {
-        display: block;
-      }
+
+  &:hover {
+    outline: none;
+    // border-bottom:2px solid $accent;
+    > .drop__menu {
+      display: block;
     }
+  }
 
   &__menu {
     width: 14rem;
     display: none;
     position: absolute;
-    top:100%;
+    top: 100%;
+    .nuxt-link-active {
+      border: none !important;
+    }
   }
-  &--icon{
-    display:flex;
+  &--icon {
+    display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    svg{
-      margin-left:.5rem;
+    svg {
+      margin-left: 0.5rem;
     }
   }
 }
-.btn{
-  &.join{
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+
+.btn {
+  &.join {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 </style>

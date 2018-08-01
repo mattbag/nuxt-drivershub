@@ -1,18 +1,22 @@
 <template>
   <div>
+
     <nav class="nav">
       <ul class="list-reset flex">
         <li class="home">
-          <nuxt-link to="/clubs">club home</nuxt-link>
+          <nuxt-link :to="clubRoot">{{page.title.rendered}}</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/clubs/sponsors">events</nuxt-link>
+          <nuxt-link :to="clubRoot">club home</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/clubs/blog">drivers</nuxt-link>
+          <nuxt-link :to="clubRoot+ '/events'">events</nuxt-link>
         </li>
         <li>
-          <nuxt-link to="/clubs/store">partners offers</nuxt-link>
+          <nuxt-link :to="clubRoot+ '/drivers'">drivers</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link :to="clubRoot+ '/partner-offers'">partner offers</nuxt-link>
         </li>
       </ul>
     </nav>
@@ -31,19 +35,38 @@
 
     <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
       <div class="w-full p-4">
-        <h2>Events</h2>
+        <h2 class="mb-4">Events</h2>
+        <GridEvent :articles="events" />
+
+        <nuxt-link class="btn dark" :to="clubRoot+ '/events'">see all events</nuxt-link>
+
       </div>
 
-      <div class="w-full px-4">
+    </div>
 
-        cards
+    <div class="max-w-3xl px-4 mx-auto">
+      <hr>
+      <div class="p-4 w-full">
+        <div class="p-4 bg-white">
+            <h2 class="mb-4 w-full">Driver of the year</h2>
+          <div class="flex flex-wrap -mx-4">
+            <div class="md:w-1/4 px-4">
+              image
+            </div>
+            <div class="md:w-3/4 px-4">
+              copy
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
 import ArticleFeaturedImage from "~/components/ArticleFeaturedImage.vue";
+import GridEvent from "~/components/GridEvent";
 
 export default {
   async asyncData({ app, store, params }) {
@@ -52,17 +75,33 @@ export default {
     );
     // console.log(club.data[0])
     store.commit("setPage", club.data[0]);
+
+    if (!store.state.events) {
+      let events = await app.$axios.get(
+        `${
+          store.state.wordpressAPI
+        }/wp/v2/event?orderby=date&per_page=10&_embed`
+      );
+      store.commit("setEvents", events.data);
+    }
   },
 
   beforeMount() {},
 
   components: {
-    ArticleFeaturedImage
+    ArticleFeaturedImage,
+    GridEvent
   },
 
   computed: {
     page() {
       return this.$store.state.page;
+    },
+    events() {
+      return this.$store.state.events;
+    },
+    clubRoot() {
+      return "/clubs/" + this.$store.state.page.slug;
     },
     // author () {
     //   return this.$store.state.page._embedded.author[0]
@@ -134,7 +173,7 @@ export default {
   display: flex;
   flex-shrink: 0;
   position: sticky;
-  top:$headerHeight;
+  top: $headerHeight;
   z-index: 2;
 
   @media (max-width: 500px) {

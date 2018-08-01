@@ -88,15 +88,15 @@ $hero-pad: 2rem;
   margin-top: -$headerHeight;
   color: #fff;
   background-color: $black;
-  &__heading{
+  &__heading {
     color: $accent;
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 2rem;
     line-height: 1.3;
   }
-  &__panel{
-      position: absolute;
+  &__panel {
+    position: absolute;
   }
   &__slide {
     // transition: opacity 500ms;
@@ -152,8 +152,12 @@ $hero-pad: 2rem;
       padding: 1rem 0 !important; // margin: .7rem 0;
       // padding-right: 0 !important;
       font-size: 1.5rem;
-      &:focus {
-        color: $accent;
+      a {
+        width: 100%;
+        display: inline-block;
+        &:focus {
+          color: $accent;
+        }
       }
     }
   }
@@ -190,6 +194,6 @@ $hero-pad: 2rem;
 }
 .fadeSlide-enter, .fadeSlide-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-  transform: translateX(30%)
+  transform: translateX(30%);
 }
 </style>

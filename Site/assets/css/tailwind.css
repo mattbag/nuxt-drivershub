@@ -69,7 +69,7 @@
   .btn{
     @apply font-bold;
     @apply py-3;
-    @apply px-4;
+    @apply px-8;
     @apply text-center;
     @apply uppercase;
     /* @apply bg-black; */
@@ -77,6 +77,14 @@
     @apply text-sm;
     @apply inline-block;
     min-width: 8rem;
+  }
+  .btn.dark{
+    @apply bg-black;
+    @apply text-yellow;
+  }
+  .btn.light{
+    @apply bg-white;
+    @apply text-black;
   }
 
   .input{
@@ -94,4 +102,20 @@
   .input:focus{
     @apply border-yellow;
     outline:none
+  }
+
+  .wrap{
+    /* max-w-3xl flex flex-wrap px-4 mx-auto */
+    @apply max-w-3xl;
+    @apply flex;
+    @apply flex-wrap;
+    @apply px-4;
+    @apply mx-auto;
+  }
+
+  hr{
+    width: 100%;
+    border-bottom: 1px solid #000;
+    @apply mx-4;
+    @apply my-6;
   }

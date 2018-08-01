@@ -3,7 +3,7 @@
     <!-- <Spinner1/> -->
     <div class="interface">
       <TheHeader/>
-      <main role="main" :class="$route.name != 'index' && 'py-2'">
+      <main role="main">
         <nuxt/>
       </main>
       <TheFooter v-if="$route.name != 'index'"/>
@@ -158,5 +158,16 @@ select {
   border-radius: 0;
   background-color: transparent;
 }
-
+// nav{
+//   a{
+//     text-transform: uppercase;
+//     color: $white;
+//   }
+// }
+// .nuxt-link-active:not(.always-inactive) {
+//   padding-bottom: 2px;
+//   border-bottom: 1px solid;
+//   color: $accent;
+//   border-color: $accent;
+// }
 </style>
