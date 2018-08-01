@@ -1,10 +1,11 @@
 const webpack = require('webpack')
+const axios = require('axios')
 
 module.exports = {
   // Build configuration
   build: {
     // Run ESLINT on save
-    extend (config, ctx) {
+    extend(config, ctx) {
       // if (ctx.isClient) {
       //   config.module.rules.push({
       //     enforce: 'pre',
@@ -66,4 +67,22 @@ module.exports = {
   // router:{
   //   middleware: ['getClubs']
   // }
+
+  // =====================
+  // this will activate ssr for dynamic routes, use payload method as suggested
+  // https://nuxtjs.org/api/configuration-generate#routes
+  generate: {
+    routes: function () {
+      return axios.get('http://rest.dhq.atlasagency.com.au/wp/wp-json/wp/v2/event')
+        .then((res) => {
+          // console.log(res)
+          return res.data.map((event) => {
+            return {
+              route: '/event/' + event.slug,
+              payload: event
+            }
+          })
+        })
+    }
+  }
 }

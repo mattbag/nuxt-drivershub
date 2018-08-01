@@ -19,7 +19,7 @@
         <nuxt-link to="/blog" exact>Blog</nuxt-link>
         <nuxt-link to="/store">store</nuxt-link>
         <nuxt-link to="/contact">contact</nuxt-link>
-        <nuxt-link to="/pages/sample-page">Sample Page</nuxt-link>
+        <nuxt-link to="/sample-page">Sample Page</nuxt-link>
       </nav>
     </div>
 

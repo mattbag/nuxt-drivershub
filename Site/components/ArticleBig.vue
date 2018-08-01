@@ -1,6 +1,6 @@
 <template>
   <article class="bg-white mb-8">
-    <nuxt-link :to="`/${this.heroArticle.slug}`">
+    <nuxt-link :to="`/articles/${this.heroArticle.slug}`">
       <div class="featured-image lazy" v-if="featuredImage">
         <div class="image-height" :style="paddingTop"></div>
         <div class="image" v-lazy:backgroundImage="featuredImage.source_url"></div>
@@ -20,7 +20,7 @@
       <div class="meta p-4">
         <h2 v-html="this.heroArticle.title.rendered"></h2>
         <div class="mb-2" v-html="this.heroArticle.excerpt.rendered"></div>
-         <nuxt-link :to="`/${this.heroArticle.slug}`" class="uppercase underline font-bold hover:text-red">read more</nuxt-link>
+         <nuxt-link :to="`/articles/${this.heroArticle.slug}`" class="uppercase underline font-bold hover:text-red">read more</nuxt-link>
       </div>
   </article>
 </template>

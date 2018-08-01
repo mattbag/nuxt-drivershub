@@ -64,10 +64,18 @@ import ArticleFeaturedImage from "~/components/ArticleFeaturedImage.vue";
 // }
 
 export default {
-  async asyncData({ app, store, params }) {
-    let event = await app.$axios.get(
-      `${store.state.wordpressAPI}/wp/v2/event?slug=${params.event}&_embed`
-    );
+  async asyncData({ app, store, params, error, payload }) {
+    console.log(payload);
+    let event;
+    if (payload) {
+      // return { event: payload };
+      event = payload;
+    } else {
+      event = await app.$axios.get(
+        `${store.state.wordpressAPI}/wp/v2/event?slug=${params.event}&_embed`
+      );
+    }
+
     // console.log(event.data[0])
     store.commit("setEvent", event.data[0]);
   },

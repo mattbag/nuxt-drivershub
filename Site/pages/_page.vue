@@ -28,14 +28,14 @@
 </template>
 
 <script>
-import * as Vibrant from 'node-vibrant'
+// import * as Vibrant from 'node-vibrant'
 import ArticleFeaturedImage from '~/components/ArticleFeaturedImage.vue'
 
-if (process.browser) {
-  require('lightgallery.js')
-  require('lg-zoom.js')
-  require('lg-thumbnail.js')
-}
+// if (process.browser) {
+//   require('lightgallery.js')
+//   require('lg-zoom.js')
+//   require('lg-thumbnail.js')
+// }
 
 export default {
   async asyncData ({ app, store, params }) {
@@ -47,11 +47,11 @@ export default {
     if (this.featuredImage.source_url) {
       let img = this.page._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url
 
-      Vibrant.from(img).getPalette((err, palette) => {
-        if (!err) {
-          this.$store.commit('setFeaturedColor', palette)
-        }
-      })
+      // Vibrant.from(img).getPalette((err, palette) => {
+      //   if (!err) {
+      //     this.$store.commit('setFeaturedColor', palette)
+      //   }
+      // })
     }
   },
 
@@ -95,21 +95,21 @@ export default {
   },
 
   methods: {
-    gallery () {
-      let galleries = document.querySelectorAll('.content > .gallery')
+    // gallery () {
+    //   let galleries = document.querySelectorAll('.content > .gallery')
 
-      for (let i = 0; i < galleries.length; i++) {
-        // eslint-disable-next-line
-        lightGallery(galleries[i], {
-          download: false,
-          selector: 'a'
-        })
-      }
-    }
+    //   for (let i = 0; i < galleries.length; i++) {
+    //     // eslint-disable-next-line
+    //     lightGallery(galleries[i], {
+    //       download: false,
+    //       selector: 'a'
+    //     })
+    //   }
+    // }
   },
 
   mounted () {
-    this.gallery()
+    // this.gallery()
   }
 }
 </script>
@@ -227,8 +227,8 @@ article {
 </style>
 
 <style lang="scss">
-@import '../../node_modules/lightgallery.js/dist/css/lightgallery.css';
-@import '~assets/css/vars.scss';
+// @import '../../node_modules/lightgallery.js/dist/css/lightgallery.css';
+// @import '~assets/css/vars.scss';
 
 .lg-backdrop {
   background-color: #111;
@@ -270,7 +270,7 @@ article {
 </style>
 
 <style lang="scss">
-@import '~assets/css/vars.scss';
+// @import '~assets/css/vars.scss';
 
 .single-article {
   .content {

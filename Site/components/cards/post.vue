@@ -1,6 +1,6 @@
 <template>
  <article class="bg-white h-full">
-        <nuxt-link :to="`/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
+        <nuxt-link :to="`/articles/${article.slug}`" v-if="article._embedded['wp:featuredmedia']">
           <div class="featured lazy" v-if="featuredImage(article)">
             <div class="image-height" :style="{ paddingTop: featuredImage(article).height / featuredImage(article).width * 100 + '%' }"></div>
             <img v-lazy="featuredImage(article).source_url" class="image"/>
@@ -13,7 +13,7 @@
           <div class="p-4">
             <h2 v-html="article.title.rendered"></h2>
             <div class="excerpt" v-html="article.excerpt.rendered"></div>
-          <nuxt-link :to="`/${article.slug}`" class="uppercase underline font-bold hover:text-red">
+          <nuxt-link :to="`/articles/${article.slug}`" class="uppercase underline font-bold hover:text-red">
           read more
           </nuxt-link>
           </div>
