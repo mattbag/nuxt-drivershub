@@ -24,7 +24,7 @@ module.exports = {
   },
   css: [
     // 'normalize.css/normalize.css',
-    'swiper/dist/css/swiper.css',
+    // 'swiper/dist/css/swiper.css',
     '~/assets/css/tailwind.css'
   ],
 
@@ -55,7 +55,7 @@ module.exports = {
 
   plugins: [
     { src: '~plugins/getSiteShared.js', ssr: false },
-    { src: '~plugins/swiper.js', ssr: false },
+    // { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/vue-lazyload', ssr: false },
     { src: '~plugins/vue-scrollto', ssr: false },
     { src: '~plugins/web-font-loader', ssr: false },

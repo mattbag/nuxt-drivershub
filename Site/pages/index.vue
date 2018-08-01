@@ -1,9 +1,8 @@
 <template>
-<HeroSlider />
-
+<Gate />
 </template>
 <script>
-import HeroSlider from '~/components/HeroSlider'
+import Gate from '~/components/Gate'
 
 export default {
   async asyncData({ app, store, params }) {
@@ -16,7 +15,7 @@ export default {
   },
 
   components: {
-    HeroSlider
+    Gate
   },
 
   computed: {
