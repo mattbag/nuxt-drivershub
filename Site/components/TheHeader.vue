@@ -1,11 +1,11 @@
 <template>
   <header class="border-b border-yellow" :class="{'bg-black': $route.name != 'index'}">
     <div>
-      <nuxt-link class="always-inactive mr-8" to="/" @click.prevent="homeScrollTop">
+      <nuxt-link class="always-inactive mr-8" :to="user ? '/user' : '/'" @click.prevent="homeScrollTop">
         <span>{{meta.name}}</span>
       </nuxt-link>
       <nav>
-        <nuxt-link to="/home">Home</nuxt-link>
+        <nuxt-link :to="user ? '/user' : '/login'">Home</nuxt-link>
         <div class="drop mx-8 py-2">
           <nuxt-link to="/clubs" >Clubs <span style="vertical-align:middle"><caret/></span></nuxt-link>
           <div class="drop__menu bg-black p-4">
@@ -16,7 +16,7 @@
         </div>
         <nuxt-link to="/calendar">calendar</nuxt-link>
         <nuxt-link to="/sponsors">sponsors</nuxt-link>
-        <nuxt-link to="/blog" exact>Blog</nuxt-link>
+        <nuxt-link to="/blog">Blog</nuxt-link>
         <nuxt-link to="/store">store</nuxt-link>
         <nuxt-link to="/contact">contact</nuxt-link>
         <nuxt-link to="/sample-page">Sample Page</nuxt-link>
@@ -24,15 +24,23 @@
     </div>
 
     <div>
-      <nav>
+      <nav v-if="user">
+        <div class="drop mx-8 py-2">
+          <nuxt-link to="/profile" class="drop--icon">{{user.name}} <iuser/><caret/></nuxt-link>
+          <div class="drop__menu pin-r p-4 bg-grey-dark">
+            <ul class="list-reset text-center">
+              <li><nuxt-link to="/user">your profile</nuxt-link></li>
+              <li><nuxt-link to="/user">your marketplace</nuxt-link></li>
+              <li><nuxt-link to="/user">edit profile</nuxt-link></li>
+              <li><a class="cursor-pointer" @click.prevent="logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <nav v-else>
         <!-- <nuxt-link to="/signup">signup</nuxt-link> -->
         <nuxt-link to="/login">login</nuxt-link>
         <nuxt-link to="/join" class="btn bg-white join">join</nuxt-link>
-        <!-- <btn-link 
-          :text="'Join'"
-          :url="'/join'"
-          classes="bg-white text-black"
-          ></btn-link> -->
       </nav>
     </div>
   </header>
@@ -41,12 +49,14 @@
 <script>
 import btnLink from "@/components/atoms/btn-link";
 import caret from "@/components/atoms/caret";
+import iuser from "@/components/atoms/icon/iuser";
 import { setTimeout } from "timers";
 
 export default {
   components: {
     btnLink,
-    caret
+    caret,
+    iuser
   },
   data() {
     return {
@@ -60,11 +70,20 @@ export default {
     //   },300);
       // }, this.drop ? 300 : 0);
     // }
+    logout(){
+      this.$store.commit("setUser", null);
+      // this.$store.state.user;
+      // console.log(this.$store.state.user)
+      this.$router.push('/')
+    }
   },
 
   computed: {
     meta() {
       return this.$store.state.meta;
+    },
+    user() {
+      return this.$store.state.user;
     },
     clubs() {
       // console.log(this.$store.state.clubs);
@@ -109,13 +128,16 @@ header {
     @media (max-width: 500px) {
       display: none;
     }
+    // svg{
+    //   width:2rem;
+    // }
   }
 
   // .drop__toggle,
   a:not(.btn) {
     border-color: $white;
     color: $white;
-    font-weight: bold;
+    // font-weight: bold;
     text-decoration: none;
     transition: color 0.1s, border-color 0.1s;
     text-transform: uppercase;
@@ -158,7 +180,16 @@ header {
     width: 14rem;
     display: none;
     position: absolute;
-    top: 2.4rem;
+    top:100%;
+  }
+  &--icon{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    svg{
+      margin-left:.5rem;
+    }
   }
 }
 .btn{

@@ -356,6 +356,7 @@ module.exports = {
       'black': colors['black'],
       'white': colors['white'],
       'yellow': colors['yellow'],
+      'grey-dark': colors['grey-dark'],
       'red': colors['red']
     },
   

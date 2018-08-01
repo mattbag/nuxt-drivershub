@@ -10,6 +10,7 @@ const store = () => new Vuex.Store({
   },
 
   state: {
+    user:null,
     clubs: null,
     events: null,
     event: null,
@@ -78,6 +79,9 @@ const store = () => new Vuex.Store({
     },
     setEvent (state, data) {
       state.event = data
+    },
+    setUser (state, data) {
+      state.user = data
     },
   }
 })

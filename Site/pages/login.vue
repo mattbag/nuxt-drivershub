@@ -7,7 +7,9 @@
       <div class="bg-white p-4 mb-6">
         <LoginForm v-show="!showPasswordForgotten" />
         <div v-show="showPasswordForgotten">
-          password reset
+          <div>
+            <p>Reset your password</p>
+          </div>
 
           <button v-show="showPasswordForgotten" @click="showPasswordForgotten = !showPasswordForgotten" class="uppercase underline">go back</button>
 
