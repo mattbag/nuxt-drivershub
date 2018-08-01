@@ -1,10 +1,17 @@
 <template>
-  <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
+  <div class="max-w-3xl flex flex-wrap px-4 mx-auto mt-4">
     <!-- <page-header heading="Your Portal" :breadcrumbs="[{url:'/', title: 'home'},{url:'/blog', title: 'blog'}]" /> -->
-    <page-header heading="Your Photos" />
+    <div class="lg:w-3/4">
+      <page-header heading="Your Photos" />
+    </div>
+    <div class="lg:w-1/4 px-4 py-2 mb-2">
+      <button @click.prevent="addPhotos = !addPhotos" class="btn bg-black w-full text-white">add photos</button>
+    </div>
     <no-ssr>
       <section class="px-4 w-full overflow-hidden">
-
+<div v-if="addPhotos" class="landing">
+  <span>Drop photos</span>
+</div>
         <div class="grid">
           <g-item v-for="i in 16" :key="'div_'+i"></g-item>
         </div>
@@ -45,11 +52,11 @@ export default {
     // }
   },
 
-  //  data() {
-  //   return {
-  //      browser: process.browser
-  //   };
-  // },
+   data() {
+    return {
+       addPhotos: false
+    };
+  },
 
   components: {
     PageHeader,
@@ -78,5 +85,15 @@ export default {
   // grid-template-rows: 10%;
   // grid-auto-flow: dense;
   // grid-auto-rows: 1fr;
+}
+.landing{
+  height: 24rem;
+  background-color: #fff;
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 2px dotted #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
