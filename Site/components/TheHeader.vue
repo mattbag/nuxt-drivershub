@@ -29,6 +29,7 @@
           <nuxt-link to="/profile" class="drop--icon">{{user.name}} <iuser/><caret/></nuxt-link>
           <div class="drop__menu pin-r p-4 bg-grey-dark">
             <ul class="list-reset text-center">
+              <li><nuxt-link to="/user/photos">gallery</nuxt-link></li>
               <li><nuxt-link to="/user">your profile</nuxt-link></li>
               <li><nuxt-link to="/user">your marketplace</nuxt-link></li>
               <li><nuxt-link to="/user">edit profile</nuxt-link></li>
