@@ -4,15 +4,15 @@
 
     <div v-show="!loading">
 
-        <div class="swiper-wrapper">
-      <transition name="fade" mode="out-in" appear>
+      <div class="swiper-wrapper">
+        <transition name="fade" mode="out-in" appear>
           <div class="hero__slide swiper-slide" v-if="currentSlide == i" :key="'slide__' +club.id" v-for="(club,i) in clubs">
             <div class="hero__slide" :style="{backgroundImage: `url(${ club._embedded ? club._embedded['wp:featuredmedia'][0].source_url : ''})`}">
             </div>
             <!-- <h1>{{i}}</h1> -->
           </div>
-      </transition>
-        </div>
+        </transition>
+      </div>
 
     </div>
     <div class="hero__over"></div>
@@ -27,14 +27,14 @@
 
       </div>
       <div class="hero__controls--right">
-        <!-- <transition-group mode="out-in"> -->
-        <div class="hero__panel" v-show="currentSlide == i" :key="'panel__' +club.id" v-for="(club,i) in clubs">
-          <h2>{{club.acf.long_title || club.title.rendered}}</h2>
-          <div v-html="club.content.rendered"></div>
-          <br>
-          <btn-link classes="bg-white text-black" :text="'Find our more'" :url="'/clubs/' + club.slug"></btn-link>
-        </div>
-        <!-- </transition-group> -->
+        <transition-group name="fadeSlide" mode="out-in" appear>
+          <div class="hero__panel" v-show="currentSlide == i" :key="'panel__' +club.id" v-for="(club,i) in clubs">
+            <h2 class="hero__heading">{{club.acf.long_title || club.title.rendered}}</h2>
+            <div v-html="club.content.rendered"></div>
+            <br>
+            <btn-link classes="bg-white text-black" :text="'Find out more'" :url="'/clubs/' + club.slug"></btn-link>
+          </div>
+        </transition-group>
 
       </div>
     </div>
@@ -88,12 +88,15 @@ $hero-pad: 2rem;
   margin-top: -$headerHeight;
   color: #fff;
   background-color: $black;
-  h2 {
+  &__heading{
     color: $accent;
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 2rem;
     line-height: 1.3;
+  }
+  &__panel{
+      position: absolute;
   }
   &__slide {
     // transition: opacity 500ms;
@@ -173,12 +176,20 @@ $hero-pad: 2rem;
   transform: translate3d(-50%, -50%, 0);
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 500ms;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 
-
+.fadeSlide-enter-active,
+.fadeSlide-leave-active {
+  transition: opacity 300ms, transform 500ms ease-out;
+}
+.fadeSlide-enter, .fadeSlide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30%)
+}
 </style>
