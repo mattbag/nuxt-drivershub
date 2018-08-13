@@ -1,5 +1,5 @@
 <template>
-  <div class="blog" id="blog" style="padding-top:60px">
+  <div class="blog" id="blog">
     <!-- <Spinner1/> -->
     <div class="interface">
       <TheHeader/>
@@ -55,7 +55,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.interface{
+  padding-top: $headerHeight;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  main{flex-grow: 1}
+}
 .page-enter-active {
   transition: opacity 0.2s;
 }
