@@ -33,7 +33,7 @@ const store = () => new Vuex.Store({
     },
     topicArticles: [],
     topics: null,
-    wordpressAPI: 'http://rest.dhq.atlasagency.com.au/wp/wp-json'
+    wordpressAPI: 'https://rest.dhq.atlasagency.com.au/wp/wp-json'
     // wordpressAPI: 'https://wp-api.kmr.io/wp-json'
   },
 

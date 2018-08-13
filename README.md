@@ -1,6 +1,6 @@
 # Nuxt Demo using wordpress rest api
 
-## NuePress
+## [NuePress](https://github.com/krestaino/nuepress)
 
 - [Nuxt.js](https://github.com/nuxt/nuxt.js) + [WordPress REST API](https://developer.wordpress.org/rest-api/)
 
