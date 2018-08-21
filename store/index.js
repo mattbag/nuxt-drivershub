@@ -3,16 +3,17 @@ import Vuex from 'vuex'
 const store = () => new Vuex.Store({
 
   actions: {
-    async nuxtServerInit ({ commit, state }) {
+    async nuxtServerInit({ commit, state }) {
       let meta = await this.$axios.get(state.wordpressAPI)
       commit('setMeta', meta.data)
     }
   },
 
   state: {
-    user:null,
+    user: null,
     clubs: null,
     events: null,
+    partners: null,
     event: null,
     article: null,
     articles: [],
@@ -29,7 +30,7 @@ const store = () => new Vuex.Store({
     meta: {
       description: '',
       name: '',
-      logo:''
+      logo: ''
     },
     topicArticles: [],
     topics: null,
@@ -38,51 +39,57 @@ const store = () => new Vuex.Store({
   },
 
   mutations: {
-    setArticle (state, data) {
+    setArticle(state, data) {
       state.article = data
     },
-    setArticles (state, data) {
+    setArticles(state, data) {
       state.articles = state.articles.concat(data)
     },
-    setPage (state, data) {
+    setPage(state, data) {
       state.page = data
     },
-    setAuthorArticles (state, data) {
+    setAuthorArticles(state, data) {
       state.authorArticles.push(data)
     },
-    setAuthors (state, data) {
+    setAuthors(state, data) {
       state.authors = data
     },
-    setIndexInfiniteLoading (state, data) {
+    setIndexInfiniteLoading(state, data) {
       state.indexInfiniteLoading = data
     },
-    setFeaturedColor (state, data) {
+    setFeaturedColor(state, data) {
       state.featuredColor = data
     },
-    setFeaturedArticles (state, data) {
+    setFeaturedArticles(state, data) {
       state.featuredArticles = state.featuredArticles.concat(data)
     },
-    setMeta (state, data) {
+    setMeta(state, data) {
       state.meta = data
     },
-    setTopicArticles (state, data) {
+    setTopicArticles(state, data) {
       state.topicArticles.push(data)
     },
-    setTopics (state, data) {
+    setTopics(state, data) {
       state.topics = data
     },
-    setClubs (state, data) {
+    setClubs(state, data) {
       state.clubs = data
     },
-    setEvents (state, data) {
+    setEvents(state, data) {
       state.events = data
     },
-    setEvent (state, data) {
+    setEvent(state, data) {
       state.event = data
     },
-    setUser (state, data) {
+    setUser(state, data) {
       state.user = data
     },
+    setPartners(state, data) {
+      state.partners = data
+    },
+    setPartner(state, data) {
+      state.partner = data
+    }
   }
 })
 

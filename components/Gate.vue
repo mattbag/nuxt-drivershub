@@ -15,7 +15,9 @@
       </div>
 
     </div>
+
     <div class="hero__over"></div>
+    
     <div v-show="!loading" class="hero__controls">
       <div class="hero__controls--left">
         <div class="hero__controls--line" :style="{transform: `translateY(${linePosition}px)`}"><hr /></div>
@@ -45,6 +47,7 @@
 <script>
 import btnLink from "@/components/atoms/btn-link";
 import Spinner1 from "@/components/Spinner1";
+import { setTimeout } from 'timers';
 
 export default {
   data: () => ({
@@ -67,7 +70,9 @@ export default {
     }
   },
   mounted() {
-    this.loading = false;
+    setTimeout(_ =>{
+      this.loading = false;
+    },200)
   },
   computed: {
     linePosition() {

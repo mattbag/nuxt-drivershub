@@ -10,13 +10,13 @@
           <nuxt-link :to="clubRoot">club home</nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="clubRoot+ '/events'">events</nuxt-link>
+          <router-link :to="{path:'/events', query:{ club: $store.state.page.slug }}">events</router-link>
         </li>
         <li>
           <nuxt-link :to="clubRoot+ '/drivers'">drivers</nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="clubRoot+ '/partner-offers'">partner offers</nuxt-link>
+          <nuxt-link :to="'/partners'">partner offers</nuxt-link>
         </li>
       </ul>
     </nav>
@@ -35,11 +35,11 @@
 
     <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
       <div class="w-full p-4">
-        <h2 class="mb-4">Events</h2>
+        <h2 class="mb-4">Upcoming Events</h2>
         <GridEvent :articles="events" />
 
-        <nuxt-link class="btn dark" :to="clubRoot+ '/events'">see all events</nuxt-link>
-
+        <!-- <nuxt-link class="btn dark" :to="clubRoot+ '/events'">see all events</nuxt-link> -->
+ <router-link class="btn dark" :to="{path:'/events', query:{ club: $store.state.page.slug }}">see all events</router-link>
       </div>
 
     </div>
@@ -98,7 +98,11 @@ export default {
       return this.$store.state.page;
     },
     events() {
-      return this.$store.state.events;
+      // return this.$store.state.events;
+      return this.$store.state.events.filter(e =>{
+          // console.log(e)
+            return e.acf.event_club.post_name === this.$store.state.page.slug
+        })
     },
     clubRoot() {
       return "/clubs/" + this.$store.state.page.slug;

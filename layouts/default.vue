@@ -6,7 +6,7 @@
       <main role="main">
         <nuxt/>
       </main>
-      <TheFooter v-if="$route.name != 'index'"/>
+      <TheFooter v-if="$route.name != 'index'" />
     </div>
   </div>
 </template>
@@ -26,7 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 html {
   background-color: $black;
   box-sizing: border-box;
@@ -55,12 +54,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.interface{
+.interface {
   padding-top: $headerHeight;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  main{flex-grow: 1}
+  main {
+    flex-grow: 1;
+  }
 }
 .page-enter-active {
   transition: opacity 0.2s;
@@ -78,7 +79,10 @@ a {
   text-decoration: none;
   transition: 0.1s;
 }
-
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
 .lazy {
   background-color: #333;
   position: relative;

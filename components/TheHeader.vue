@@ -16,7 +16,10 @@
             <ul class="list-reset">
               <li v-for="c in clubs" :key="c.id" class="club mb-1">
                 <nuxt-link :to="'/clubs/'+ c.slug">
-                  <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt" width="20" class="bg-white"> {{c.title.rendered}}
+                <span class="mr-1">
+                  <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt" width="20" class="bg-white"> 
+                </span>
+                  <span>{{c.title.rendered}}</span>
                 </nuxt-link>
               </li>
             </ul>
@@ -206,6 +209,9 @@ header {
     top: 100%;
     .nuxt-link-active {
       border: none !important;
+    }
+    a{
+      display: flex;
     }
   }
   &--icon {
