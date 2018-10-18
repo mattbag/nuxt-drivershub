@@ -31,21 +31,26 @@ const store = () => new Vuex.Store({
     // wordpressAPI: 'https://wp-api.kmr.io/wp-json'
   },
   actions: {
-    async nuxtServerInit({ commit, state }) {
-      // console.log('nuxtServerInit')
+    async nuxtServerInit({ commit, state, dispatch }) {
+      console.log(':::nuxtServerInit')
       let meta = await this.$axios.get(state.wordpressAPI)
       commit('setMeta', meta.data)
-      let clubs = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/club?_embed`)
-      commit("setClubs", clubs.data)
+     
+      await dispatch('fetchClubs');
       // probably all the menu
     },
     async fetchArticles({ commit, state }) {
-      // console.log('fetchArticles')
+      console.log(':::fetchArticles')
       let articles = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/posts?orderby=date&per_page=10&_embed`)
       commit("setArticles", articles.data);
     },
+    async fetchClubs({ commit, state }) {
+      console.log(':::fetchClubs')
+      let clubs = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/club?_embed`)
+      commit("setClubs", clubs.data)
+    },
     async fetchEvents({ commit, state }) {
-      // console.log('fetchEvents')
+      console.log(':::fetchEvents')
       let events = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/event?orderby=date&per_page=10&_embed`)
       commit("setEvents", events.data);
     },
