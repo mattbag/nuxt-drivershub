@@ -37,7 +37,7 @@ const store = () => new Vuex.Store({
     wordpressAPI: 'https://rest.dhq.atlasagency.com.au/wp/wp-json'
     // wordpressAPI: 'https://wp-api.kmr.io/wp-json'
   },
-
+  actions: {},
   mutations: {
     setArticle(state, data) {
       state.article = data

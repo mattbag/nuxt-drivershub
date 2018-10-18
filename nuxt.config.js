@@ -54,7 +54,7 @@ module.exports = {
   ],
 
   plugins: [
-    { src: '~plugins/getSiteShared.js', ssr: false },
+    { src: '~plugins/getSiteShared.js', ssr: true },
     // { src: '~plugins/swiper.js', ssr: false },
     { src: '~plugins/vue-lazyload', ssr: false },
     { src: '~plugins/vue-scrollto', ssr: false },
