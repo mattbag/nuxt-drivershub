@@ -2,6 +2,26 @@
   <aside class="sidebar px-4 w-1/4">
 
     <div class="py-4 bg-white px-4 mb-4">
+      <p class="uppercase font-bold mb-2">Show</p>
+      <label class="block cursor-pointer">
+        <input type="checkbox" checked name="" id="" class="mr-2">
+        <span>Future</span>
+      </label>
+      <label class="block cursor-pointer">
+        <input type="checkbox" checked name="" id="" class="mr-2">
+        <span>Past</span>
+      </label>
+       <label class="block cursor-pointer">
+        <input type="checkbox" checked name="" id="" class="mr-2">
+        <span>Free</span>
+      </label>
+       <label class="block cursor-pointer">
+        <input type="checkbox" checked name="" id="" class="mr-2">
+        <span>Ticket</span>
+      </label>
+
+    </div>
+    <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Sort by</p>
 
       <div class="inline-block relative w-full">
@@ -12,11 +32,11 @@
           <option value="date-oldest">date:oldest</option>
         </select>
         <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-black">
-          <caret/>
+          <caret />
         </div>
       </div>
-
     </div>
+
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Club</p>
       <label v-for="c in clubs" :key="'club_filter_' + c.id" class="block cursor-pointer">
@@ -32,7 +52,7 @@
       </label>
     </div> -->
 
-    </aside>
+  </aside>
 </template>
 
 <script>
@@ -44,14 +64,14 @@ export default {
       // clubs: [1, 2, 3, 4, 5]
     };
   },
-  components:{
+  components: {
     caret
   },
   computed: {
     clubs() {
       return this.$store.state.clubs;
     }
-  },
+  }
 };
 </script>
 

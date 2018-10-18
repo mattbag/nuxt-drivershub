@@ -9,17 +9,17 @@
         <div class="drop mx-8 py-2">
           <nuxt-link to="/clubs"><span>Clubs</span>
             <span style="vertical-align:middle">
-              <caret/>
+              <caret />
             </span>
           </nuxt-link>
-          <div class="drop__menu bg-black p-4">
+          <div class="drop__menu p-4">
             <ul class="list-reset">
               <li v-for="c in clubs" :key="c.id" class="club mb-1">
-                <nuxt-link :to="'/clubs/'+ c.slug">
-                <span class="mr-1">
-                  <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt" width="20" class="bg-white"> 
-                </span>
-                  <span>{{c.title.rendered}}</span>
+                <nuxt-link :to="'/clubs/'+ c.slug" class="py-2">
+                  <div class="img__frame">
+                    <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt">
+                  </div>
+                  <!-- <span>{{c.title.rendered}}</span> -->
                 </nuxt-link>
               </li>
             </ul>
@@ -39,8 +39,8 @@
       <nav v-if="user">
         <div class="drop mx-8 py-2">
           <nuxt-link to="/user" class="always-inactive drop--icon">{{user.name}}
-            <iuser/>
-            <caret/>
+            <iuser />
+            <caret />
           </nuxt-link>
           <div class="drop__menu pin-r p-4 bg-grey-dark">
             <ul class="list-reset text-center">
@@ -124,8 +124,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.club{
+.club {
   display: inline-block;
+}
+.img__frame {
+  width: 6rem;
 }
 header {
   // font-family: "Roboto", sans-serif;
@@ -175,7 +178,7 @@ header {
     }
 
     // &.nuxt-link-exact-active:not(.always-inactive) {
-    &.nuxt-link-active:not(.always-inactive)  {
+    &.nuxt-link-active:not(.always-inactive) {
       padding-bottom: 2px;
       border-bottom: 1px solid;
       color: $accent;
@@ -204,15 +207,18 @@ header {
   }
 
   &__menu {
-    width: 14rem;
     display: none;
+    /* width: 14rem; */
+    background-color: #eee;
     position: absolute;
     top: 100%;
     .nuxt-link-active {
+      /* padding-bottom: 0 !important; */
       border: none !important;
     }
-    a{
+    a {
       display: flex;
+      white-space: nowrap;
     }
   }
   &--icon {

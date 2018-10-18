@@ -71,18 +71,13 @@ import GridEvent from "~/components/GridEvent";
 export default {
   async asyncData({ app, store, params }) {
     let club = await app.$axios.get(
-      `${store.state.wordpressAPI}/wp/v2/club?slug=${params.club}&_embed`
+      `${store.state.wordpressAPI}${store.state.wordpressAPIpath}/club?slug=${params.club}&_embed`
     );
-    // console.log(club.data[0])
     store.commit("setPage", club.data[0]);
 
     if (!store.state.events) {
-      let events = await app.$axios.get(
-        `${
-          store.state.wordpressAPI
-        }/wp/v2/event?orderby=date&per_page=10&_embed`
-      );
-      store.commit("setEvents", events.data);
+    console.log('no events')
+     await store.dispatch('fetchEvents');
     }
   },
 

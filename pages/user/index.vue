@@ -4,24 +4,31 @@
     <page-header heading="Your Portal" />
     <no-ssr>
       <section class="px-4">
-        <h3>Events</h3>
+        <div class="py-4">
+
+          <h3>Events</h3>
+          <br>
+          <GridEvent :articles="events" />
+
+          <nuxt-link to="/events" class="btn bg-black text-yellow">
+            see all events
+          </nuxt-link>
+        </div>
+        <hr class="border-t border-black my-8 mx-auto">
+        <div class="py-4">
+
+          <h3>Marketplace</h3>
+          <br>
+          <GridEvent :articles="$store.state.articles" />
+
+          <nuxt-link to="/store" class="btn bg-black text-yellow">
+            see marketplace
+          </nuxt-link>
+
+        </div>
         <br>
-        <GridEvent :articles="events" />
 
-        <nuxt-link to="/events" class="btn bg-black text-yellow">
-          see all events
-        </nuxt-link>
-        <hr class="border-t border-black my-6">
-
-        <h3>Marketplace</h3>
-        <br>
-        <GridEvent :articles="$store.state.articles" />
-
-        <nuxt-link to="/store" class="btn bg-black text-yellow">
-          see marketplace
-        </nuxt-link>
-
-        <div slot="Spinner"></div>
+        <div slot="Spinner1"></div>
       </section>
     </no-ssr>
 
@@ -67,10 +74,10 @@ export default {
     GridEvent,
     Spinner1
   },
-  created(){
+  created() {
     // console.log('before')
-    if(!this.$store.state.user){
-      this.$router.push('login')
+    if (!this.$store.state.user) {
+      this.$router.push("login");
     }
   },
 

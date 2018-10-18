@@ -4,15 +4,12 @@
 
         <ArticleSidebarLeft />
 
-        <section class="articles px-4 w-1/2">
+        <section class="articles px-4 w-2/3">
 
             <!-- <pre>
        {{$store.state.events}}
      </pre> -->
-            <ul>
-                <li v-for="e in eventList" :key="e.id" v-html="e.title.rendered"></li>
-            </ul>
-
+        <GridEvent :articles="eventList" columns="2"/>
         </section>
 
         <!-- <div class="w-1/4 px-4">
@@ -29,6 +26,8 @@ import ArticleGrid from "~/components/ArticleGrid";
 import ArticleBig from "~/components/ArticleBig";
 import ArticleSidebar from "~/components/ArticleSidebar";
 import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
+
+import GridEvent from "~/components/GridEvent";
 
 import Spinner1 from "~/components/Spinner1.vue";
 
@@ -57,6 +56,7 @@ export default {
     ArticleBig,
     ArticleSidebar,
     ArticleSidebarLeft,
+    GridEvent,
     // InfiniteLoading,
     // Smile,
     Spinner1

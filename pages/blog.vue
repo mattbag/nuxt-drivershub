@@ -4,14 +4,14 @@
 
     <ArticleSidebarLeft />
 
-    <section class="articles px-4 w-1/2">
+    <section class="articles px-4 w-full lg:w-3/4">
 
       <ArticleBig
         v-if="heroArticle"
         :hero-article="heroArticle"
       />
 
-      <ArticleGrid :articles="$store.state.articles"/>
+      <ArticleGrid :articles="$store.state.articles" columns="3"/>
       <!-- <InfiniteLoading
         v-if="indexInfiniteLoading.enabled"
         ref="infiniteLoading"
@@ -32,10 +32,10 @@
       
     </section>
 
-  <div class="w-1/4 px-4">
+  <!-- <div class="w-1/4 px-4">
     <ArticleSidebar v-if="$store.state.featuredArticles.length" :featured-articles="$store.state.featuredArticles"/>
     <ArticleSidebar v-else :featured-articles="$store.state.articles"/>
-  </div>
+  </div> -->
 
     
 
