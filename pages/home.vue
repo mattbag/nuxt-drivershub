@@ -11,7 +11,7 @@
         <nuxt-link to="/events" class="btn bg-black text-yellow">
           see all events
         </nuxt-link>
-        <hr class="border-t border-black my-6">
+        <hr class="border-t border-black my-6 mx-0">
 
         <h3>Marketplace</h3>
         <br>

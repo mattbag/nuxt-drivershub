@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!doLogin">
     <LoginSocial />
     <or />
     <form action="" @submit.prevent="loginUser">
@@ -29,16 +29,20 @@ import or from "@/components/atoms/or";
 import LoginSocial from "@/components/forms/LoginSocial";
 
 export default {
+  data() {
+    return { doLogin: false }
+  },
   components: {
     LoginSocial,
     or
   },
-  methods:{
-    loginUser(){
-      this.$store.commit("setUser", {name: 'Matt', type: "member1"});
+  methods: {
+    loginUser() {
+      this.doLogin = true;
+      this.$store.commit("setUser", { name: "Matt", type: "Premium" });
       // this.$store.state.user;
       // console.log(this.$store.state.user)
-      this.$router.push('/user')
+      this.$router.push("/user");
     }
   }
   //   props: {

@@ -1,8 +1,8 @@
 <template>
   <section class="hero">
-    <Spinner1 v-show="loading" />
+    <Spinner1 v-show="!clubs" />
 
-    <div v-show="!loading">
+    <div v-show="clubs">
 
       <div class="swiper-wrapper">
         <transition name="fade" mode="out-in" appear>
