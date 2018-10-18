@@ -3,23 +3,12 @@
 
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Show</p>
-      <label class="block cursor-pointer">
-        <input type="checkbox" checked name="" id="" class="mr-2">
-        <span>Future</span>
+      <label class="block cursor-pointer" @change="handleFilter(af, 'show')" v-for="af in eventsFilters" :key="af.name">
+        <input type="checkbox" :checked="af.active" :name="af.name" id="" class="mr-2">
+        <span class="uppercase">{{af.name}}</span>
+        <!-- <span class="uppercase">{{af.active}}</span> -->
       </label>
-      <label class="block cursor-pointer">
-        <input type="checkbox" checked name="" id="" class="mr-2">
-        <span>Past</span>
-      </label>
-       <label class="block cursor-pointer">
-        <input type="checkbox" checked name="" id="" class="mr-2">
-        <span>Free</span>
-      </label>
-       <label class="block cursor-pointer">
-        <input type="checkbox" checked name="" id="" class="mr-2">
-        <span>Ticket</span>
-      </label>
-
+      
     </div>
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Sort by</p>
@@ -67,9 +56,21 @@ export default {
   components: {
     caret
   },
+  methods:{
+    handleFilter(filter, type){
+      // console.log('====');
+      // console.log(filter);
+      // console.log('====');
+
+      this.$store.dispatch('toggleEventsFilters', filter, type);
+    }
+  },
   computed: {
     clubs() {
       return this.$store.state.clubs;
+    },
+    eventsFilters(){
+      return this.$store.state.eventsFilters.show;
     }
   }
 };

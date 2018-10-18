@@ -1,10 +1,10 @@
 <template>
     <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
-        <page-header heading="DriversHQ Events Calendar" />
+        <PageHeader heading="DriversHQ Events Calendar" />
 
         <ArticleSidebarLeft />
 
-        <section class="articles px-4 w-2/3">
+        <section class="articles px-4 w-3/4">
 
             <!-- <pre>
        {{$store.state.events}}
@@ -22,14 +22,11 @@
 
 <script>
 import PageHeader from "~/components/PageHeader";
-import ArticleGrid from "~/components/ArticleGrid";
-import ArticleBig from "~/components/ArticleBig";
-import ArticleSidebar from "~/components/ArticleSidebar";
 import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
 
 import GridEvent from "~/components/GridEvent";
 
-import Spinner1 from "~/components/Spinner1.vue";
+// import Spinner1 from "~/components/Spinner1.vue";
 
 export default {
   async asyncData({ app, store, params }) {
@@ -52,14 +49,9 @@ export default {
 
   components: {
     PageHeader,
-    ArticleGrid,
-    ArticleBig,
-    ArticleSidebar,
     ArticleSidebarLeft,
     GridEvent,
-    // InfiniteLoading,
-    // Smile,
-    Spinner1
+    // Spinner1
   },
 
   computed: {

@@ -4,11 +4,22 @@ const store = () => new Vuex.Store({
   state: {
     user: null,
     clubs: null,
-    events: null,
     partners: null,
-    event: null,
     article: null,
     articles: [],
+    articlesFilters: [],
+    event: null,
+    events: null,
+    eventsFilters: {
+      show: [
+        { name: 'future', active: true },
+        { name: 'past', active: true },
+        { name: 'free', active: true },
+        { name: 'paid', active: true },
+      ],
+      clubs: [],
+      clubsort: null,
+    },
     page: null,
     authorArticles: [],
     authors: null,
@@ -35,7 +46,7 @@ const store = () => new Vuex.Store({
       console.log(':::nuxtServerInit')
       let meta = await this.$axios.get(state.wordpressAPI)
       commit('setMeta', meta.data)
-     
+
       await dispatch('fetchClubs');
       // probably all the menu
     },
@@ -57,11 +68,28 @@ const store = () => new Vuex.Store({
     // async fetchFromWP({ commit, state }, post_type) {
 
     // }
+    toggleEventsFilters({ commit, state }, filter) {
+      filter.active = !filter.active
+
+      commit("setEventsFilters", filter)
+    },
 
   },
   // getters:{},
 
   mutations: {
+    setEventsFilters(state, data) {
+      // console.log(data);
+      // state.eventsFilters.show[data.name] = data.active
+      state.eventsFilters.show = state.eventsFilters.show.map(item => {
+        if (item.name === data.name) {
+          item.active = data.active
+        }
+        return item
+      });
+      // console.log(state.eventsFilters.show);
+      // console.log('====');
+    },
     setArticle(state, data) {
       state.article = data
     },
