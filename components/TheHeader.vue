@@ -25,7 +25,8 @@
             </ul>
           </div>
         </div>
-        <nuxt-link to="/calendar">calendar</nuxt-link>
+        <nuxt-link to="/events/calendar">calendar</nuxt-link>
+        <!-- <nuxt-link to="/calendar">calendar</nuxt-link> -->
         <nuxt-link to="/sponsors">sponsors</nuxt-link>
         <nuxt-link to="/blog">Blog</nuxt-link>
         <nuxt-link to="/store">store</nuxt-link>

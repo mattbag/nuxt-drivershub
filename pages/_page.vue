@@ -87,7 +87,7 @@ export default {
 
   head () {
     return {
-      title: `${this.page.title.rendered} | ${this.$store.state.meta.name}`,
+      title: `${this.page && this.page.title.rendered} | ${this.$store.state.meta.name}`,
       meta: [
         { description: this.page.excerpt.rendered }
       ]

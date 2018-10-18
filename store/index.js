@@ -1,14 +1,6 @@
 import Vuex from 'vuex'
 
 const store = () => new Vuex.Store({
-
-  actions: {
-    async nuxtServerInit({ commit, state }) {
-      let meta = await this.$axios.get(state.wordpressAPI)
-      commit('setMeta', meta.data)
-    }
-  },
-
   state: {
     user: null,
     clubs: null,
@@ -34,10 +26,35 @@ const store = () => new Vuex.Store({
     },
     topicArticles: [],
     topics: null,
-    wordpressAPI: 'https://rest.dhq.atlasagency.com.au/wp/wp-json'
+    wordpressAPI: 'https://rest.dhq.atlasagency.com.au/wp/wp-json',
+    wordpressAPIpath: '/wp/v2',
     // wordpressAPI: 'https://wp-api.kmr.io/wp-json'
   },
-  actions: {},
+  actions: {
+    async nuxtServerInit({ commit, state }) {
+      // console.log('nuxtServerInit')
+      let meta = await this.$axios.get(state.wordpressAPI)
+      commit('setMeta', meta.data)
+      let clubs = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/club?_embed`)
+      commit("setClubs", clubs.data)
+      // probably all the menu
+    },
+    async fetchArticles({ commit, state }) {
+      // console.log('fetchArticles')
+      let articles = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/posts?orderby=date&per_page=10&_embed`)
+      commit("setArticles", articles.data);
+    },
+    async fetchEvents({ commit, state }) {
+      // console.log('fetchEvents')
+      let events = await this.$axios.get(`${state.wordpressAPI}${state.wordpressAPIpath}/event?orderby=date&per_page=10&_embed`)
+      commit("setEvents", events.data);
+    },
+    // async fetchFromWP({ commit, state }, post_type) {
+
+    // }
+
+  },
+
   mutations: {
     setArticle(state, data) {
       state.article = data

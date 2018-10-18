@@ -37,23 +37,23 @@ import Spinner1 from "~/components/Spinner1.vue";
 export default {
   async asyncData({ app, store, params }) {
     // console.log('ctx ',store.state)
-    if (!store.state.articles.length) {
-      let articles = await app.$axios.get(
-        `${
-          store.state.wordpressAPI
-        }/wp/v2/posts?orderby=date&per_page=10&_embed`
-      );
-      store.commit("setArticles", articles.data);
-    }
+    // if (!store.state.articles.length) {
+    //   let articles = await app.$axios.get(
+    //     `${
+    //       store.state.wordpressAPI
+    //     }/wp/v2/posts?orderby=date&per_page=10&_embed`
+    //   );
+    //   store.commit("setArticles", articles.data);
+    // }
 
-    if (!store.state.events) {
-      let events = await app.$axios.get(
-        `${
-          store.state.wordpressAPI
-        }/wp/v2/event?orderby=date&per_page=10&_embed`
-      );
-      store.commit("setEvents", events.data);
-    }
+    // if (!store.state.events) {
+    //   let events = await app.$axios.get(
+    //     `${
+    //       store.state.wordpressAPI
+    //     }/wp/v2/event?orderby=date&per_page=10&_embed`
+    //   );
+    //   store.commit("setEvents", events.data);
+    // }
   },
 
   //  data() {
