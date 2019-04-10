@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-3xl flex flex-wrap px-4 mx-auto">
-    <page-header heading="Blog"/>
+    <page-header heading="Blog" />
 
     <ArticleSidebarLeft />
 
@@ -11,33 +11,17 @@
         :hero-article="heroArticle"
       />
 
-      <ArticleGrid :articles="$store.state.articles" columns="3"/>
-      <!-- <InfiniteLoading
-        v-if="indexInfiniteLoading.enabled"
-        ref="infiniteLoading"
-        @infinite="moreArticles"
-      >
-        <span slot="spinner">
-          <Spinner1/>
-        </span>
-        <span slot="no-results">
-          <Smile/>
-          <div>No more articles!</div>
-        </span>
-        <span slot="no-more">
-          <Smile/>
-          <div>No more articles!</div>
-        </span>
-      </InfiniteLoading> -->
-      
+      <ArticleGrid
+        :articles="$store.state.articles"
+        columns="3"
+      />
+
     </section>
 
-  <!-- <div class="w-1/4 px-4">
+    <!-- <div class="w-1/4 px-4">
     <ArticleSidebar v-if="$store.state.featuredArticles.length" :featured-articles="$store.state.featuredArticles"/>
     <ArticleSidebar v-else :featured-articles="$store.state.articles"/>
   </div> -->
-
-    
 
   </div>
 </template>
@@ -49,8 +33,6 @@ import ArticleBig from "~/components/ArticleBig";
 import ArticleSidebar from "~/components/ArticleSidebar";
 import ArticleSidebarLeft from "~/components/ArticleSidebarLeft";
 
-// import InfiniteLoading from "vue-infinite-loading/src/components/InfiniteLoading.vue";
-// import Smile from "~/assets/svg/Smile.vue";
 import Spinner1 from "~/components/Spinner1.vue";
 
 export default {
@@ -97,18 +79,7 @@ export default {
   computed: {
     heroArticle() {
       return this.$store.state.articles[0];
-    },
-    // spliceArticles() {
-    //   let res = this.$store.state.articles;
-    //   debugger;
-    //   return res.shift();
-    // },
-    // isBrowser(){
-    //   return process.browser
-    // }
-    // indexInfiniteLoading() {
-    //   return this.$store.state.indexInfiniteLoading;
-    // }
+    }
   },
 
   head() {
@@ -118,27 +89,6 @@ export default {
     };
   },
 
-  methods: {
-    // moreArticles($state) {
-    //   this.indexInfiniteLoading.page++;
-    //   this.$axios
-    //     .get(
-    //       `${
-    //         this.$store.state.wordpressAPI
-    //       }/wp/v2/posts?orderby=date&per_page=10&page=${
-    //         this.indexInfiniteLoading.page
-    //       }&_embed`
-    //     )
-    //     .then(response => {
-    //       this.$store.commit("setArticles", response.data);
-    //       // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
-    //       $state.loaded();
-    //     })
-    //     .catch(() => {
-    //       // this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete')
-    //       $state.complete();
-    //     });
-    // }
-  }
+  methods: {}
 };
 </script>
