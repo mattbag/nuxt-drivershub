@@ -68,7 +68,7 @@
             <div v-html="club.content.rendered"></div>
             <br>
             <btn-link
-              classes="bg-white text-black"
+              classes="border-white border text-white"
               :text="'Find out more'"
               :url="'/clubs/' + club.slug"
             ></btn-link>

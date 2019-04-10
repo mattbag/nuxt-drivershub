@@ -1,7 +1,14 @@
 <template>
-  <header class="border-b border-yellow" :class="{'bg-black': $route.name != 'index'}">
+  <header
+    class="border-b border-yellow"
+    :class="{'bg-black': $route.name != 'index'}"
+  >
     <div>
-      <nuxt-link class="always-inactive mr-8" :to="user ? '/user' : '/'" @click.prevent="homeScrollTop">
+      <nuxt-link
+        class="always-inactive mr-8"
+        :to="user ? '/user' : '/'"
+        @click.prevent="homeScrollTop"
+      >
         <span>{{meta.name}}</span>
       </nuxt-link>
       <nav>
@@ -14,10 +21,20 @@
           </nuxt-link>
           <div class="drop__menu p-4">
             <ul class="list-reset">
-              <li v-for="c in clubs" :key="c.id" class="club mb-1">
-                <nuxt-link :to="'/clubs/'+ c.slug" class="py-2">
+              <li
+                v-for="c in clubs"
+                :key="c.id"
+                class="club mb-1"
+              >
+                <nuxt-link
+                  :to="'/clubs/'+ c.slug"
+                  class="py-2"
+                >
                   <div class="img__frame">
-                    <img :src="c.acf.club_logo.url" :alt="c.acf.club_logo.alt">
+                    <img
+                      :src="c.acf.club_logo.url"
+                      :alt="c.acf.club_logo.alt"
+                    >
                   </div>
                   <!-- <span>{{c.title.rendered}}</span> -->
                 </nuxt-link>
@@ -38,11 +55,14 @@
     <div>
       <nav v-if="user">
         <div class="drop mx-8 py-2">
-          <nuxt-link to="/user" class="always-inactive drop--icon">{{user.name}}
+          <nuxt-link
+            to="/user"
+            class="always-inactive drop--icon"
+          >{{user.name}}
             <iuser />
             <caret />
           </nuxt-link>
-          <div class="drop__menu pin-r p-4 bg-grey-dark">
+          <div class="drop__menu pin-r p-4 bg-black">
             <ul class="list-reset text-center">
               <li>
                 <nuxt-link to="/user/photos">gallery</nuxt-link>
@@ -57,7 +77,10 @@
                 <nuxt-link to="/user">edit profile</nuxt-link>
               </li>
               <li>
-                <a class="cursor-pointer" @click.prevent="logout">Logout</a>
+                <a
+                  class="cursor-pointer"
+                  @click.prevent="logout"
+                >Logout</a>
               </li>
             </ul>
           </div>
@@ -65,8 +88,14 @@
       </nav>
       <nav v-else>
         <!-- <nuxt-link to="/signup">signup</nuxt-link> -->
-        <nuxt-link to="/login" exact>login</nuxt-link>
-        <nuxt-link to="/join" class="btn bg-white join">join</nuxt-link>
+        <nuxt-link
+          to="/login"
+          exact
+        >login</nuxt-link>
+        <nuxt-link
+          to="/join"
+          class="btn bg-white join"
+        >join</nuxt-link>
       </nav>
     </div>
   </header>
@@ -209,7 +238,7 @@ header {
   &__menu {
     display: none;
     /* width: 14rem; */
-    background-color: #eee;
+    /* background-color: #eee; */
     position: absolute;
     top: 100%;
     .nuxt-link-active {
