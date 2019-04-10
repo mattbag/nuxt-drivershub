@@ -47,16 +47,16 @@ export default {
       store.commit("setArticles", articles.data);
     }
 
-    if (!store.state.featuredArticles.length) {
-      let articles = await app.$axios.get(
-        `${
-          store.state.wordpressAPI
-        }/wp/v2/posts?orderby=date&per_page=10&categories=${
-          store.state.featuredID
-        }&_embed`
-      );
-      store.commit("setFeaturedArticles", articles.data);
-    }
+    // if (!store.state.featuredArticles.length) {
+    //   let articles = await app.$axios.get(
+    //     `${
+    //       store.state.wordpressAPI
+    //     }/wp/v2/posts?orderby=date&per_page=10&categories=${
+    //       store.state.featuredID
+    //     }&_embed`
+    //   );
+    //   store.commit("setFeaturedArticles", articles.data);
+    // }
   },
 
   //  data() {

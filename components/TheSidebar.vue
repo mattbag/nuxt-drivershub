@@ -1,21 +1,47 @@
 <template>
   <aside>
     <div class="inner-container">
-      <article v-for="article in featuredArticles" :key="article.id">
-        <nuxt-link :to="`/${article.slug}`" v-if="article._embedded['wp:featuredmedia']" class="image">
-          <div class="featured lazy" v-if="featuredImage(article)">
-            <div class="image-height" :style="{ paddingTop: featuredImage(article).height / featuredImage(article).width * 100 + '%' }"></div>
+      <article
+        v-for="article in featuredArticles"
+        :key="article.id"
+      >
+        <nuxt-link
+          :to="`/${article.slug}`"
+          v-if="article._embedded['wp:featuredmedia']"
+          class="image"
+        >
+          <div
+            class="featured lazy"
+            v-if="featuredImage(article)"
+          >
+            <div
+              class="image-height"
+              :style="{ paddingTop: featuredImage(article).height / featuredImage(article).width * 100 + '%' }"
+            ></div>
             <img v-lazy="featuredImage(article).source_url">
-            <Spinner1/>
+            <Spinner1 />
           </div>
         </nuxt-link>
         <div class="content">
           <div class="meta">
-            <span v-html="shortTimestamp(article.date)"></span>&nbsp;–&nbsp;<nuxt-link class="topic fancy" v-for="topic in article._embedded['wp:term'][0]" :to="`/topics/${topic.slug}`" :key="topic.id" v-html="topic.name" v-if="topic.id !== $store.state.featuredID"></nuxt-link>
+            <span v-html="shortTimestamp(article.date)"></span>&nbsp;–&nbsp;<nuxt-link
+              class="topic fancy"
+              v-for="topic in article._embedded['wp:term'][0]"
+              :to="`/topics/${topic.slug}`"
+              :key="topic.id"
+              v-html="topic.name"
+              v-show="topic.id !== $store.state.featuredID"
+            ></nuxt-link>
           </div>
-          <nuxt-link :to="`/${article.slug}`" class="article">
+          <nuxt-link
+            :to="`/${article.slug}`"
+            class="article"
+          >
             <h2 v-html="article.title.rendered"></h2>
-            <div class="excerpt" v-html="article.excerpt.rendered"></div>
+            <div
+              class="excerpt"
+              v-html="article.excerpt.rendered"
+            ></div>
           </nuxt-link>
         </div>
       </article>
@@ -24,7 +50,7 @@
 </template>
 
 <script>
-import Spinner1 from '~/components/Spinner1'
+import Spinner1 from "~/components/Spinner1";
 
 export default {
   components: {
@@ -37,19 +63,18 @@ export default {
     shortTimestamp: Function
   },
   methods: {
-    featuredImage (article) {
-      let featuredImage = article._embedded['wp:featuredmedia']
+    featuredImage(article) {
+      let featuredImage = article._embedded["wp:featuredmedia"];
 
       if (featuredImage) {
-        return featuredImage[0].media_details.sizes.medium || false
+        return featuredImage[0].media_details.sizes.medium || false;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 aside {
   // min-width: 360px;
   flex: 1;
@@ -85,7 +110,7 @@ aside {
 
           &::before {
             background-color: rgba(0, 0, 0, 0);
-            content: '';
+            content: "";
             height: 100%;
             position: absolute;
             top: 0;
@@ -150,7 +175,7 @@ aside {
             margin-left: 8px;
 
             &::before {
-              content: ', ';
+              content: ", ";
               color: $primary;
               left: -7px;
               position: absolute;

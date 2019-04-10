@@ -5,36 +5,73 @@
     <div v-show="clubs">
 
       <div class="swiper-wrapper">
-        <transition name="fade" mode="out-in" appear>
-          <div class="hero__slide swiper-slide" v-if="currentSlide == i" :key="'slide__' +club.id" v-for="(club,i) in clubs">
-            <div class="hero__slide" :style="{backgroundImage: `url(${ club._embedded ? club._embedded['wp:featuredmedia'][0].source_url : ''})`}">
+        <transition-group
+          name="fade"
+          mode="out-in"
+          appear
+        >
+          <div
+            class="hero__slide swiper-slide"
+            v-show="currentSlide == i"
+            :key="'slide__' +club.id"
+            v-for="(club,i) in clubs"
+          >
+            <div
+              class="hero__slide"
+              :style="{backgroundImage: `url(${ club._embedded ? club._embedded['wp:featuredmedia'][0].source_url : ''})`}"
+            >
             </div>
             <!-- <h1>{{i}}</h1> -->
           </div>
-        </transition>
+        </transition-group>
       </div>
 
     </div>
 
     <div class="hero__over"></div>
-    
-    <div v-show="!loading" class="hero__controls">
+
+    <div
+      v-show="!loading"
+      class="hero__controls"
+    >
       <div class="hero__controls--left">
-        <div class="hero__controls--line" :style="{transform: `translateY(${linePosition}px)`}"><hr /></div>
+        <div
+          class="hero__controls--line"
+          :style="{transform: `translateY(${linePosition}px)`}"
+        >
+          <hr />
+        </div>
         <ul class="hero__list">
-          <li class="hero__list--item cursor-pointer" v-for="(club,i) in clubs" :key="'toggle__' +club.id">
+          <li
+            class="hero__list--item cursor-pointer"
+            v-for="(club,i) in clubs"
+            :key="'toggle__' +club.id"
+          >
             <a @click.prevent="changeSlide(i)">{{club.title.rendered}}</a>
           </li>
         </ul>
 
       </div>
       <div class="hero__controls--right">
-        <transition-group name="fadeSlide" mode="out-in" appear>
-          <div class="hero__panel" v-show="currentSlide == i" :key="'panel__' +club.id" v-for="(club,i) in clubs">
+        <transition-group
+          name="fadeSlide"
+          mode="out-in"
+          appear
+        >
+          <div
+            class="hero__panel"
+            v-show="currentSlide == i"
+            :key="'panel__' +club.id"
+            v-for="(club,i) in clubs"
+          >
             <h2 class="hero__heading">{{club.acf.long_title || club.title.rendered}}</h2>
             <div v-html="club.content.rendered"></div>
             <br>
-            <btn-link classes="bg-white text-black" :text="'Find out more'" :url="'/clubs/' + club.slug"></btn-link>
+            <btn-link
+              classes="bg-white text-black"
+              :text="'Find out more'"
+              :url="'/clubs/' + club.slug"
+            ></btn-link>
           </div>
         </transition-group>
 
@@ -47,7 +84,7 @@
 <script>
 import btnLink from "@/components/atoms/btn-link";
 import Spinner1 from "@/components/Spinner1";
-import { setTimeout } from 'timers';
+import { setTimeout } from "timers";
 
 export default {
   data: () => ({
@@ -70,9 +107,9 @@ export default {
     }
   },
   mounted() {
-    setTimeout(_ =>{
+    setTimeout(_ => {
       this.loading = false;
-    },200)
+    }, 200);
   },
   computed: {
     linePosition() {
@@ -175,7 +212,7 @@ $hero-pad: 2rem;
     z-index: 1;
     pointer-events: none;
     height: 100%;
-    background-color: transparentize(black, 0.5);
+    background-color: transparentize(black, 0.2);
   }
 }
 .spinner {

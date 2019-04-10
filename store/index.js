@@ -10,15 +10,18 @@ export const state = () => ({
   event: null,
   events: null,
   eventsFilters: {
-    show: [
-      { name: "future", active: true },
-      { name: "past", active: true },
-      { name: "free", active: true },
-      { name: "paid", active: true }
-    ],
-    clubs: [],
-    clubsort: null
+    future: true,
+    past: true,
+    free: true,
+    paid: true
   },
+  // { name: "future", active: true },
+  // { name: "past", active: true },
+  // { name: "free", active: true },
+  // { name: "paid", active: true }
+  // clubs: [],
+  // clubsort: null
+  // },
   page: null,
   authorArticles: [],
   authors: null,
@@ -44,16 +47,7 @@ export const state = () => ({
 // ==========
 export const mutations = {
   setEventsFilters(state, data) {
-    // console.log(data);
-    // state.eventsFilters.show[data.name] = data.active
-    state.eventsFilters.show = state.eventsFilters.show.map(item => {
-      if (item.name === data.name) {
-        item.active = data.active;
-      }
-      return item;
-    });
-    // console.log(state.eventsFilters.show);
-    // console.log('====');
+    state.eventsFilters = data;
   },
   setArticle(state, data) {
     state.article = data;
@@ -147,9 +141,10 @@ export const actions = {
 
   // }
   toggleEventsFilters({ commit, state }, filter) {
-    filter.active = !filter.active;
+    let _filters = { ...state.eventsFilters };
+    _filters[filter] = !_filters[filter];
 
-    commit("setEventsFilters", filter);
+    commit("setEventsFilters", _filters);
   }
 };
 

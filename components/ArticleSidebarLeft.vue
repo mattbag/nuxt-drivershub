@@ -3,12 +3,23 @@
 
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Show</p>
-      <label class="block cursor-pointer" @change="handleFilter(af, 'show')" v-for="af in eventsFilters" :key="af.name">
-        <input type="checkbox" :checked="af.active" :name="af.name" id="" class="mr-2">
-        <span class="uppercase">{{af.name}}</span>
+      <label
+        class="block cursor-pointer"
+        @change="handleFilter(af)"
+        v-for="(active,af) in eventsFiltersList"
+        :key="af"
+      >
+        <input
+          type="checkbox"
+          :checked="active"
+          :name="af"
+          id=""
+          class="mr-2"
+        >
+        <span class="uppercase">{{af}}</span>
         <!-- <span class="uppercase">{{af.active}}</span> -->
       </label>
-      
+      <!-- {{eventsFilters}} -->
     </div>
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Sort by</p>
@@ -28,8 +39,17 @@
 
     <div class="py-4 bg-white px-4 mb-4">
       <p class="uppercase font-bold mb-2">Club</p>
-      <label v-for="c in clubs" :key="'club_filter_' + c.id" class="block cursor-pointer">
-        <input type="checkbox" name="" id="" class="mr-2">
+      <label
+        v-for="c in clubs"
+        :key="'club_filter_' + c.id"
+        class="block cursor-pointer"
+      >
+        <input
+          type="checkbox"
+          name=""
+          id=""
+          class="mr-2"
+        >
         <span>{{c.title.rendered}}</span>
       </label>
     </div>
@@ -56,25 +76,22 @@ export default {
   components: {
     caret
   },
-  methods:{
-    handleFilter(filter, type){
+  methods: {
+    handleFilter(filter) {
       // console.log('====');
       // console.log(filter);
       // console.log('====');
 
-      this.$store.dispatch('toggleEventsFilters', filter, type);
+      this.$store.dispatch("toggleEventsFilters", filter);
     }
   },
   computed: {
     clubs() {
       return this.$store.state.clubs;
     },
-    eventsFilters(){
-      return this.$store.state.eventsFilters.show;
+    eventsFiltersList() {
+      return this.$store.state.eventsFilters;
     }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>
