@@ -1,10 +1,13 @@
 <template>
-  <div class="blog" id="blog">
+  <div
+    class="blog"
+    id="blog"
+  >
     <!-- <Spinner1/> -->
     <div class="interface">
-      <TheHeader/>
+      <TheHeader />
       <main role="main">
-        <nuxt/>
+        <nuxt />
       </main>
       <TheFooter v-if="$route.name != 'index'" />
     </div>
@@ -49,7 +52,7 @@ html {
 body {
   // font-size: 0.85rem;
   // font-weight: 300;
-  background-color: $gray-light;
+  background-color: #111;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
